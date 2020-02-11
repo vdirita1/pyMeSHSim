@@ -213,7 +213,7 @@ class pathMethod(InformationContent):
 
 
 
-    def calPathSimilarity(self, dui1=None, dui2=None, category=None):
+    def calPathSimilarity(self, dui1=None, dui2=None, category=None, weight=0.7):
         """Calculating the term similarity based on term path.
 
         This is the "wang" method.
@@ -230,6 +230,9 @@ class pathMethod(InformationContent):
             A MeSH category.
             One of the value in ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'V', 'Z').
             It can't be None.
+
+        weight: float
+            it should be 0~1.
 
         **return**
 
@@ -257,8 +260,8 @@ class pathMethod(InformationContent):
         if dui1 == dui2:
             return 1
 
-        SV1 = self._getSV(dui=dui1, category=category)
-        SV2 = self._getSV(dui=dui2, category=category)
+        SV1 = self._getSV(dui=dui1, category=category, weight=weight)
+        SV2 = self._getSV(dui=dui2, category=category, weight=weight)
         intersection = SV1.keys() & SV2.keys()
         interSV1 = sum([SV1[key] for key in intersection])
         interSV2 = sum([SV2[key] for key in intersection])

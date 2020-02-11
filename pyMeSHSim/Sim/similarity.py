@@ -12,7 +12,7 @@ class termComp(pathMethod):
     def __init__(self):
         pathMethod.__init__(self)
 
-    def termSim(self, dui1=None, dui2=None, category=None, method=None):
+    def termSim(self, dui1=None, dui2=None, category=None, method=None, weight=0.7):
         """This function used to measure the distance between two MeSH terms. including MHs and SCRs.
 
         **parameter**
@@ -73,7 +73,7 @@ class termComp(pathMethod):
                 if method in ["lin", "res", "jiang", "rel"]:
                     score = self.calICSimilarity(dui1=con1, dui2=con2, category=category, method=method)
                 elif method == "wang":
-                    score = self.calPathSimilarity(dui1=con1, dui2=con2, category=category)
+                    score = self.calPathSimilarity(dui1=con1, dui2=con2, category=category, weight=weight)
                 score_list.append(score)
                 print("%s\t%s\t%s\n" % (dui1, dui2, score))
 

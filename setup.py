@@ -23,5 +23,5 @@ setup(
         'Topic :: Scientific/Engineering :: Bio-Meidecine'
         ],
     install_requires=['bcolz>=1.2.1',
-                        'pandas']
+                        'pandas<0.23.0']
 )
