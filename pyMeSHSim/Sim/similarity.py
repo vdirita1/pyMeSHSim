@@ -77,7 +77,8 @@ class termComp(pathMethod):
                 score_list.append(score)
                 print("%s\t%s\t%s\n" % (dui1, dui2, score))
 
-        return score_list
+        max_score = max(score_list)
+        return max_score
 
 class metamapFilter(MetaMap, pathMethod):
     """This class inherits from MetaMap and pathMethod."""
