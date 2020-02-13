@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -150,14 +152,13 @@
 <h1>pyMeSHSim.metamapWrap.MetamapInterface.MetaMap.runMetaMap<a class="headerlink" href="#pymeshsim-metamapwrap-metamapinterface-metamap-runmetamap" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="pyMeSHSim.metamapWrap.MetamapInterface.MetaMap.runMetaMap">
-<code class="descclassname">MetaMap.</code><code class="descname">runMetaMap</code><span class="sig-paren">(</span><em>text=None, source=['MSH'], semantic_types=None, ignore_word_order=True, conjunction=True, composite_phrases=4, silent=True, sldi=True, sldiID=False, term_processing=True, input_file_path=None, text_convert=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyMeSHSim/metamapWrap/MetamapInterface.html#MetaMap.runMetaMap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyMeSHSim.metamapWrap.MetamapInterface.MetaMap.runMetaMap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">MetaMap.</code><code class="sig-name descname">runMetaMap</code><span class="sig-paren">(</span><em class="sig-param">text=None, source=['MSH'], semantic_types=None, ignore_word_order=True, conjunction=True, composite_phrases=4, silent=True, sldi=True, sldiID=False, term_processing=True, input_file_path=None, text_convert=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pyMeSHSim/metamapWrap/MetamapInterface.html#MetaMap.runMetaMap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyMeSHSim.metamapWrap.MetamapInterface.MetaMap.runMetaMap" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main method run the MetaMap.</p>
 <p><strong>parameters</strong></p>
-<dl class="docutils">
-<dt>text <span class="classifier-delimiter">:</span> <span class="classifier">String</span></dt>
-<dd>The free text will  be processed.</dd>
-<dt>source <span class="classifier-delimiter">:</span> <span class="classifier">List</span></dt>
-<dd><div class="first last line-block">
+<dl>
+<dt>text<span class="classifier">String</span></dt><dd><p>The free text will  be processed.</p>
+</dd>
+<dt>source<span class="classifier">List</span></dt><dd><div class="line-block">
 <div class="line">A list of string, the source of UMLS Metathesaurus.</div>
 <div class="line">MSH (MeSH).</div>
 <div class="line">MTH (Metathesaurus Names).</div>
@@ -169,40 +170,34 @@
 <div class="line">default: [“MSH”].</div>
 </div>
 </dd>
-<dt>semantic_types: List</dt>
-<dd><div class="first last line-block">
+<dt>semantic_types: List</dt><dd><div class="line-block">
 <div class="line">A list of string, containing the abbr. of different semantic type.</div>
 <div class="line">default: None.</div>
 <div class="line">It is all semantic types occur in MeSH “Disease” category, get from table “parents”.</div>
 </div>
 </dd>
-<dt>ignore_word_order: True or False</dt>
-<dd><div class="first last line-block">
+<dt>ignore_word_order: True or False</dt><dd><div class="line-block">
 <div class="line">Allows MetaMap to ignore the order of words in the input text.</div>
 <div class="line">default: True.</div>
 </div>
 </dd>
-<dt>conjunction: True or False</dt>
-<dd><div class="first last line-block">
+<dt>conjunction: True or False</dt><dd><div class="line-block">
 <div class="line">Causes MetaMap’s phrase chunker to recombine smaller phrases separated by a conjunction.</div>
 <div class="line">This argument exists only in version 2016.</div>
 <div class="line">default: False.</div>
 </div>
 </dd>
-<dt>composite_phrases: int</dt>
-<dd><div class="first last line-block">
+<dt>composite_phrases: int</dt><dd><div class="line-block">
 <div class="line">Causes MetaMap to construct longer, composite phrases from the smaller phrases produced by the parser.</div>
 <div class="line">default: 4.</div>
 </div>
 </dd>
-<dt>silent: True or False</dt>
-<dd><div class="first last line-block">
+<dt>silent: True or False</dt><dd><div class="line-block">
 <div class="line">Suppresses the display of header information.</div>
 <div class="line">default: True.</div>
 </div>
 </dd>
-<dt>sldi: True or False</dt>
-<dd><div class="first last line-block">
+<dt>sldi: True or False</dt><dd><div class="line-block">
 <div class="line">MetaMap by default expects input records to be separated by a blank line.</div>
 <div class="line">To process such a list of terms without inserting a blank line between each term, call MetaMap with the</div>
 <div class="line">–sldi (Single-Line Delimited Input) option.</div>
@@ -221,14 +216,13 @@
 <div class="line">default: True.</div>
 </div>
 </dd>
-<dt>slidID: True or False</dt>
-<dd><div class="first line-block">
+<dt>slidID: True or False</dt><dd><div class="line-block">
 <div class="line">This parameter can be use only in the situation that input_file_path is not None, and text is None.</div>
 <div class="line">The input file format should be like below.</div>
 <div class="line">This input format is very similar to that described in List of Terms. To associate a specific term ID (similar to a MEDLINE PMID) with each term in a list, simply prefix each term with an ID followed by a pipe symbol |”.</div>
 <div class="line">eg.</div>
 </div>
-<div class="last line-block">
+<div class="line-block">
 <div class="line">Txt001|Written informed consent.</div>
 <div class="line">Txt002|Age 18 years or older.</div>
 <div class="line">Txt003|informed consent.</div>
@@ -240,20 +234,17 @@
 <div class="line">Txt009|Male.</div>
 </div>
 </dd>
-<dt>term_processing: True or False</dt>
-<dd><div class="first last line-block">
+<dt>term_processing: True or False</dt><dd><div class="line-block">
 <div class="line">Each term will be analyzed as a single phrase, and not chunked into separate components.</div>
 <div class="line">default: True</div>
 </div>
 </dd>
-<dt>input_file_path: String or None</dt>
-<dd><div class="first last line-block">
+<dt>input_file_path: String or None</dt><dd><div class="line-block">
 <div class="line">MetaMap input file.</div>
 <div class="line">default: None</div>
 </div>
 </dd>
-<dt>text_convert: True or False</dt>
-<dd><div class="first last line-block">
+<dt>text_convert: True or False</dt><dd><div class="line-block">
 <div class="line">this parameter will be set only when set the “sldiID” option.</div>
 <div class="line">“|” is the seperate character in sldiID format, if its in you free text.</div>
 <div class="line">The software will mistake.</div>
@@ -283,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -300,32 +291,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Library reference" href="reference.html" />
     <link rel="prev" title="Installation" href="install.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -83,6 +85,11 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-introduction">Package introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metamapwrap">MetamapWrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data">Data</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#parsing-free-text">Parsing free text</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parsing-short-sentence">Parsing short sentence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parsing-long-sentence">Parsing long sentence</a></li>
@@ -175,12 +182,167 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="package-introduction">
+<h2>Package introduction<a class="headerlink" href="#package-introduction" title="Permalink to this headline">¶</a></h2>
+<p>PyMeSHSim provided three subpackages metamapWrap, Data, and Sim. The Data subpackage was the foundation of metamapWrap and Sim. It contained a redesigned data frame of MeSH terms, including main headings, supplementary concept records, and relations between them. That made MeSH term interpretation more quickly and efficiently. The metamapWrap was the essence of biomedical named entity recognition (bio-NE). It would invoke <a class="reference external" href="https://metamap.nlm.nih.gov/">metamap</a> to parse the free text. Then, metamapWrap converted the result to MeSH terms through the Data subpackage. Besides the above two functions, Sim had implemented five semantic similarity measurement methods. In totally, the functions of pyMeSHSim could be summarized into 4 point:</p>
+<ul class="simple">
+<li><p>Translating free text to MeSH term</p></li>
+<li><p>Lightweight data frame for MeSH</p></li>
+<li><p>Plenty of MeSH term library</p></li>
+<li><p>Five algorithms to measure semantic distance</p></li>
+</ul>
+<p>To make pyMeSHSim easier to be underattended and used. We would illustrate all parameters that may affect the performance of it in this tutotial. In addition, we provided a pipeline script as a batch processing example. Users can refer to the pipeline script or design their own program.</p>
+<div class="section" id="metamapwrap">
+<h3>MetamapWrap<a class="headerlink" href="#metamapwrap" title="Permalink to this headline">¶</a></h3>
+<p>MetamapWrap was a wrapper for metamap. metamapWrap combined the functions of metamap and the MeSH vocabulary, then realized bio-NE recognition and normalization. it invoked the metamap to parsed free text to UMLS concepts, then converted the UMLS concepts to MeSH terms via the Data subpackage. Although, the metamap <a class="reference external" href="https://metamap.nlm.nih.gov/UsingMetaMap.shtml">reference</a> had a detail description for its usage, we would introduce some important parameters accompany with pyMeSHSim examples here. The main parameters were listed in extended table 1.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">important parameters in etamapWrap</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>source</p></td>
+<td><p>MSH, MTH, OMIM … . Default is MSH</p></td>
+<td><p>-R in metamap. Vocabulary source. Restricting the metamap to use which thesaurus to parse the free text.</p></td>
+</tr>
+<tr class="row-odd"><td><p>semantic_types</p></td>
+<td><p>inpo,dsyn,phpranab,orgf …</p></td>
+<td><p>-J in metamap. Semantic type abbrevation. Only including the specific semantic type terms in the result.</p></td>
+</tr>
+<tr class="row-even"><td><p>conjunction</p></td>
+<td><p>True or False. Default is True</p></td>
+<td><p>–conj in metamap. Metamap default chunks the input text into short phrase, this parameter means considering the input as one phrase.</p></td>
+</tr>
+<tr class="row-odd"><td><p>term_processing</p></td>
+<td><p>True or False. Default is True</p></td>
+<td><p>-J in metamap. -z in metamap. Metamap will treat the input as one term. The function is similar with –conj.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt>source:</dt><dd><p>While parsing the same text, different vocabulary source could result in different MeSH terms. For example, the same text “Ataxias, Gait”, when we used MeSH, UMLS or OMIM as vocabulary source separately, the parsed UMLS concept are “C0751837”, “C0004134” and “C0751837”. Its corresponding MeSH terms are “’D020234”, ‘D001259’, “’D020234”. As it showed, the results are inconsistent. pyMeSHSim accepted a list of thesaurus sources in text parsing, but we recommended to use the specific thesaurus source according the subject of one’s research. The default is MSH, which means use MeSH as the specific semantic source.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.metamapWrap.MetamapInterface</span> <span class="kn">import</span> <span class="n">MetaMap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metamap</span> <span class="o">=</span> <span class="n">MetaMap</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/luozhihui/Software/public_mm/bin/metamap16&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MSH&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;20.95&#39;, &#39;preferred_name&#39;: &#39;Gait Ataxia&#39;, &#39;cui&#39;: &#39;C0751837&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Gait Ataxia&quot;-tx-1-&quot;Ataxias Gait&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7,9/4&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450&#39;, &#39;MeSHID&#39;: &#39;D020234&#39;}]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MTH&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;16.26&#39;, &#39;preferred_name&#39;: &#39;Ataxia&#39;, &#39;cui&#39;: &#39;C0004134&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Ataxia&quot;-tx-1-&quot;Ataxias&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090;C23.888.592.350.090&#39;, &#39;MeSHID&#39;: &#39;D001259&#39;}]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;OMIM&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;20.95&#39;, &#39;preferred_name&#39;: &#39;Gait Ataxia&#39;, &#39;cui&#39;: &#39;C0751837&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Gait ataxia&quot;-tx-1-&quot;Ataxias Gait&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7,9/4&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450&#39;, &#39;MeSHID&#39;: &#39;D020234&#39;}]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>semantic_types:</dt><dd><p>All MeSH main headings were belonged to some kinds of semantic types. Assigning some clear semantic types will be helpful when parsing the free text. For example, the text “breast, cancer”, if we use ‘neop’ as semantic type, the parsed result was ‘Malignant Neoplasms’. But when we use ‘bpoc’ as semantic type, the result was ‘Breast’. The ‘neop’ and ‘bpoc’ means “Neoplastic Process” and “Body Part, Organ, or Organ Component” respectively. All semantic type abbreviations can be seen in the reference (<a class="reference external" href="https://metamap.nlm.nih.gov/Docs/SemanticTypes_2018AB.txt">https://metamap.nlm.nih.gov/Docs/SemanticTypes_2018AB.txt</a>). The default semantic types were none, and all semantic would be considered. all disease related sematic types had been embedded in pyMeSHSim, users can define the ‘semantic_types’ as ‘metamap.semanticTypes’ to restrict all parsed result to disease terms.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;breast, cancer&quot;</span><span class="p">,</span> <span class="n">semantic_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;neop&quot;</span><span class="p">],</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;5.18&#39;, &#39;preferred_name&#39;: &#39;Malignant Neoplasms&#39;, &#39;cui&#39;: &#39;C0006826&#39;, &#39;semtypes&#39;: &#39;[neop]&#39;, &#39;trigger&#39;: &#39;[&quot;Cancer&quot;-tx-1-&quot;cancer&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;8/6&#39;, &#39;tree_codes&#39;: [&#39;C04&#39;], &#39;MeSHID&#39;: &#39;D009369&#39;}]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;breast, cancer&quot;</span><span class="p">,</span> <span class="n">semantic_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bpoc&quot;</span><span class="p">],</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;8.34&#39;, &#39;preferred_name&#39;: &#39;Breast&#39;, &#39;cui&#39;: &#39;C0006141&#39;, &#39;semtypes&#39;: &#39;[bpoc]&#39;, &#39;trigger&#39;: &#39;[&quot;Breast&quot;-tx-1-&quot;breast&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/6&#39;, &#39;tree_codes&#39;: &#39;A01.236&#39;, &#39;MeSHID&#39;: &#39;D001940&#39;}]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Conjunction and term_processing:</dt><dd><p>The conjunction was new character of metamap from 2016 version 2. In fact, the conjunction and term_processing had similar functions, both would treat the input as one single phrase, will not chunked the input into separate text. While the conjunction is True and term_processing is True, the input text will be treated as one short phrase, when the conjunction is False and term_processing is “False”, the input text will be treated as long sentence, and metamap will try to parse the UMLS concept from part of the sentence. For “Ataxias, Gait”, when we set both parameters “True”, the result is “’Gait Ataxia”, but when we set them “False”, the result would be ‘Ataxia’ and ‘Gait’ separately. In pyMeSHSim, if we are parsing a long sentence, we should turn the conjunction and term_processing to “False”. When we are parsing a short sentence, we should turn the Conjunction and term_processing to “True”.
+The metamap recommended to use term processing together with ignore_word_order. So, we default set the ignore_word_order on True as default.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">,</span> <span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;20.95&#39;, &#39;preferred_name&#39;: &#39;Gait Ataxia&#39;, &#39;cui&#39;: &#39;C0751837&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Gait Ataxia&quot;-tx-1-&quot;Ataxias Gait&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7,9/4&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450&#39;, &#39;MeSHID&#39;: &#39;D020234&#39;}]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">,</span> <span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">,</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+<span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;17.80&#39;, &#39;preferred_name&#39;: &#39;Ataxia&#39;, &#39;cui&#39;: &#39;C0004134&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Ataxia&quot;-tx-1-&quot;Ataxias&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090;C23.888.592.350.090&#39;, &#39;MeSHID&#39;: &#39;D001259&#39;}, {&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;17.80&#39;, &#39;preferred_name&#39;: &#39;Gait&#39;, &#39;cui&#39;: &#39;C0016928&#39;, &#39;semtypes&#39;: &#39;[fndg]&#39;, &#39;trigger&#39;: &#39;[&quot;Gait&quot;-tx-1-&quot;Gait&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;9/4&#39;, &#39;tree_codes&#39;: &#39;E01.370.600.250;G11.427.590.530.389&#39;, &#39;MeSHID&#39;: &#39;D005684&#39;}]</span>
+</pre></div>
+</div>
+<p>The other parameters in metamapWrap are format options. And detail information can be seen in <a class="reference external" href="http://pymeshsim.systemsgenetics.cn/index.html">http://pymeshsim.systemsgenetics.cn/index.html</a>.</p>
+</div>
+<div class="section" id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<p>The data subpackage contained the basic data frame in pyMeSHSim. It had two major functions, constructing MeSH data from UMLS metathesaurus and establishing data application interfaces. The data construction module made the data update easily. And the data application interface module made it possible to be used by other developers.
+Based on the data subpackage, pyMeSHSim provided a series of useful function as descripted in extended table 2.
+Application interface   Duction description</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">library function in data</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>function name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>getMeSHConcept</p></td>
+<td><p>Obtaining MeSH terms from UMLS concepts</p></td>
+</tr>
+<tr class="row-odd"><td><p>getMeSHConcept</p></td>
+<td><p>Obtaining MeSH term detail from MeSH ID</p></td>
+</tr>
+<tr class="row-even"><td><p>getUMLSIDbyMeSHID</p></td>
+<td><p>Obtaining UMLS concept from MeSH ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>getCategory</p></td>
+<td><p>Obtaining the category of MeSH terms</p></td>
+</tr>
+<tr class="row-even"><td><p>convertToNarrow</p></td>
+<td><p>Obtaining narrow or broad terms of a mesh term</p></td>
+</tr>
+<tr class="row-odd"><td><p>getParentsConceptID</p></td>
+<td><p>Obtaining parent or child terms of a MeSH term</p></td>
+</tr>
+<tr class="row-even"><td><p>getTopConceptID</p></td>
+<td><p>Obtaining the top term of a MeSH term</p></td>
+</tr>
+<tr class="row-odd"><td><p>getAncestors</p></td>
+<td><p>Obtaining the MeSH ID by MeSH tree code</p></td>
+</tr>
+<tr class="row-even"><td><p>getPrefferedName</p></td>
+<td><p>Obtaining the preffered name by MeSH ID</p></td>
+</tr>
+</tbody>
+</table>
+<p>The examples of these interfaces could be seen in <a class="reference external" href="http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library">http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library</a>.</p>
+</div>
+</div>
 <div class="section" id="parsing-free-text">
 <h2>Parsing free text<a class="headerlink" href="#parsing-free-text" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="parsing-short-sentence">
 <h3>Parsing short sentence<a class="headerlink" href="#parsing-short-sentence" title="Permalink to this headline">¶</a></h3>
 <p>We can access MetaMap with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.metamapWrap.MetamapInterface</span> <span class="k">import</span> <span class="n">MetaMap</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.metamapWrap.MetamapInterface</span> <span class="kn">import</span> <span class="n">MetaMap</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metamap</span> <span class="o">=</span> <span class="n">MetaMap</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/luozhihui/Project/UMLS/public_mm/bin/metamap16&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Ataxias, Gait&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
@@ -192,7 +354,7 @@
 <div class="section" id="parsing-long-sentence">
 <h3>Parsing long sentence<a class="headerlink" href="#parsing-long-sentence" title="Permalink to this headline">¶</a></h3>
 <p>When parsing a long sentence, we should turn off the parameters “conjunction”, “term_processing” as following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.metamapWrap.MetamapInterface</span> <span class="k">import</span> <span class="n">MetaMap</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.metamapWrap.MetamapInterface</span> <span class="kn">import</span> <span class="n">MetaMap</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metamap</span> <span class="o">=</span> <span class="n">MetaMap</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/luozhihui/Project/UMLS/public_mm/bin/metamap16&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">metamap</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="n">metamap</span><span class="o">.</span><span class="n">semanticTypes</span> <span class="p">,</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;131-I-TM-601 is investigated in clinical trials for treating brain cancer. 131-I-TM-601 is a solid. Tx binds to and reduces the activity of a matrix metalloproteinase (MMP) that regulates functioning of the chloride channels on cell membranes. TM-601 is a small 36-amino-acid peptide that selectively binds to glioma cells but not normal brain parenchyma. It is a synthetic version of a neurotoxin isolated from the venom of the Giant Yellow Israeli scorpion Leiurus quinquestriatus. The synthetic version of this peptide has been manufactured and covalently linked to iodine 131 ((131)I-TM-601) as a means of targeting radiation to tumor cells in the treatment of brain cancer. The selective effects of TM-601 are regulated by its action on MMP2 receptors.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">concept</span><span class="p">:</span>
@@ -215,7 +377,7 @@
 <div class="section" id="filtering-the-result">
 <h3>Filtering the result<a class="headerlink" href="#filtering-the-result" title="Permalink to this headline">¶</a></h3>
 <p>While parsing a long sentence, we will get many results. We can discard the ancestor concepts.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">metamapFilter</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">metamapFilter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span> <span class="o">=</span> <span class="n">metamapFilter</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/luozhihui/Project/UMLS/public_mm/bin/metamap16&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concepts</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="nb">filter</span><span class="o">.</span><span class="n">semanticTypes</span> <span class="p">,</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;131-I-TM-601 is investigated in clinical trials for treating brain cancer. 131-I-TM-601 is a solid. Tx binds to and reduces the activity of a matrix metalloproteinase (MMP) that regulates functioning of the chloride channels on cell membranes. TM-601 is a small 36-amino-acid peptide that selectively binds to glioma cells but not normal brain parenchyma. It is a synthetic version of a neurotoxin isolated from the venom of the Giant Yellow Israeli scorpion Leiurus quinquestriatus. The synthetic version of this peptide has been manufactured and covalently linked to iodine 131 ((131)I-TM-601) as a means of targeting radiation to tumor cells in the treatment of brain cancer. The selective effects of TM-601 are regulated by its action on MMP2 receptors.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">discardAncestor</span><span class="p">(</span><span class="n">concepts</span><span class="o">=</span><span class="n">concepts</span><span class="p">)</span>
@@ -234,7 +396,7 @@
 </pre></div>
 </div>
 <p>We can also discard general MeSH terms with too many descendants.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">metamapFilter</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">metamapFilter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span> <span class="o">=</span> <span class="n">metamapFilter</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/home/luozhihui/Project/UMLS/public_mm/bin/metamap16&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concepts</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">runMetaMap</span><span class="p">(</span><span class="n">semantic_types</span><span class="o">=</span><span class="nb">filter</span><span class="o">.</span><span class="n">semanticTypes</span> <span class="p">,</span> <span class="n">conjunction</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">term_processing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;131-I-TM-601 is investigated in clinical trials for treating brain cancer. 131-I-TM-601 is a solid. Tx binds to and reduces the activity of a matrix metalloproteinase (MMP) that regulates functioning of the chloride channels on cell membranes. TM-601 is a small 36-amino-acid peptide that selectively binds to glioma cells but not normal brain parenchyma. It is a synthetic version of a neurotoxin isolated from the venom of the Giant Yellow Israeli scorpion Leiurus quinquestriatus. The synthetic version of this peptide has been manufactured and covalently linked to iodine 131 ((131)I-TM-601) as a means of targeting radiation to tumor cells in the treatment of brain cancer. The selective effects of TM-601 are regulated by its action on MMP2 receptors.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">discardNodeHigh</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">concepts</span><span class="o">=</span><span class="n">concepts</span><span class="p">)</span>
@@ -257,7 +419,7 @@
 <p>Apart from metamapWrap, class termComp inherits all the class in pyMeSHSim, and thus many functions can be invoked by termComp.</p>
 <div class="section" id="obtaining-mesh-terms-from-umls-concepts">
 <h3>Obtaining MeSH terms from UMLS concepts<a class="headerlink" href="#obtaining-mesh-terms-from-umls-concepts" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getMeSHConcept</span><span class="p">(</span><span class="n">cui</span><span class="o">=</span><span class="s2">&quot;C0024116&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
@@ -270,7 +432,7 @@
 <div class="line-block">
 <div class="line">This method will be helpful.</div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">concept</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getMeSHConcept</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D008674&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
@@ -281,7 +443,7 @@
 <div class="section" id="obtaining-umls-concept-from-mesh-id">
 <h3>Obtaining UMLS concept from MeSH ID<a class="headerlink" href="#obtaining-umls-concept-from-mesh-id" title="Permalink to this headline">¶</a></h3>
 <p>If one MeSH record corresponds to more than one UMLS concepts, pyMeSHSim only provides the recommended one.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getUMLSIDbyMeSHID</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D008674&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">con</span><span class="p">)</span>
@@ -295,7 +457,7 @@
 <div class="line">A lot of processing should denote the category of terms, it is necessary to get it in the begining.</div>
 <div class="line">getCategory will return the category of a term.</div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ty</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getCategory</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D008674&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">ty</span><span class="p">)</span>
@@ -309,7 +471,7 @@
 <div class="section" id="obtaining-narrow-or-broad-terms-of-a-mesh-term">
 <h3>Obtaining narrow or broad terms of a mesh term<a class="headerlink" href="#obtaining-narrow-or-broad-terms-of-a-mesh-term" title="Permalink to this headline">¶</a></h3>
 <p>We can obtain the narrow terms of main headings by convertToNarrow and obtain the broad terms of SCRs by convertToBroad.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">NRs</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">convertToNarrow</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D000544&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">Nrs</span><span class="p">)</span>
@@ -323,7 +485,7 @@
 <div class="section" id="obtaining-parent-or-child-terms-of-a-mesh-term">
 <h3>Obtaining parent or child terms of a MeSH term<a class="headerlink" href="#obtaining-parent-or-child-terms-of-a-mesh-term" title="Permalink to this headline">¶</a></h3>
 <p>We can obtain child and parent terms of main headings by getParentsConceptID and getChildrenConceptID, respectively.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parents</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getParentsConceptID</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D000544&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">parents</span><span class="p">)</span>
@@ -337,7 +499,7 @@
 <div class="section" id="obtaining-the-top-term-of-a-mesh-term">
 <h3>Obtaining the top term of a MeSH term<a class="headerlink" href="#obtaining-the-top-term-of-a-mesh-term" title="Permalink to this headline">¶</a></h3>
 <p>We can obtain the top term of a MeSH term by getTopConceptID.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">topTerm</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getTopConceptID</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D000544&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">topTerm</span><span class="p">)</span>
@@ -348,7 +510,7 @@
 <div class="section" id="obtaining-the-ancestors-or-offsprings">
 <h3>Obtaining the ancestors or offsprings<a class="headerlink" href="#obtaining-the-ancestors-or-offsprings" title="Permalink to this headline">¶</a></h3>
 <p>We can obtain ancestors or offsprings of main headings by getAncestors or getDescendant, respectively.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ancestors</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getAncestors</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D000544&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">ancestors</span><span class="p">)</span>
@@ -361,7 +523,7 @@
 </div>
 <div class="section" id="retrieving-mesh-id-by-mesh-tree-code">
 <h3>Retrieving MeSH ID by MeSH tree code<a class="headerlink" href="#retrieving-mesh-id-by-mesh-tree-code" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dui</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getDuiFromTreeCode</span><span class="p">(</span><span class="n">treeCode</span><span class="o">=</span><span class="s2">&quot;D01.552.550&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dui</span><span class="p">)</span>
@@ -372,7 +534,7 @@
 <div class="section" id="obtaining-the-preffered-name-by-mesh-id">
 <h3>Obtaining the preffered name by MeSH ID<a class="headerlink" href="#obtaining-the-preffered-name-by-mesh-id" title="Permalink to this headline">¶</a></h3>
 <p>We can obtain the preffered name of MeSH terms by getPrefferedName.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="n">simCom</span><span class="o">.</span><span class="n">getPrefferedName</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="s2">&quot;D008674&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -386,7 +548,7 @@
 <div class="section" id="calculating-similarity-between-mesh-terms">
 <h3>Calculating similarity between MeSH terms<a class="headerlink" href="#calculating-similarity-between-mesh-terms" title="Permalink to this headline">¶</a></h3>
 <p>We can calculate semantic similarity between MeSH terms with five algorithms [“lin”, “res”, “jiang”, “rel”, “wang”].</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#in different category, the similarity will be different</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span><span class="o">.</span><span class="n">termSim</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="s2">&quot;D000544&quot;</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="s2">&quot;D006816&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;lin&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
@@ -395,7 +557,7 @@
 <span class="go">D000544 D006816 0.7500806317732097</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="k">import</span> <span class="n">termComp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyMeSHSim.Sim.similarity</span> <span class="kn">import</span> <span class="n">termComp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span> <span class="o">=</span> <span class="n">termComp</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#between mainheading and SCR, IC method</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">simCom</span><span class="o">.</span><span class="n">termSim</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="s2">&quot;C565251&quot;</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="s2">&quot;D012559&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;rel&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
@@ -420,7 +582,7 @@
         <a href="reference.html" class="btn btn-neutral float-right" title="Library reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -429,7 +591,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -446,32 +608,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

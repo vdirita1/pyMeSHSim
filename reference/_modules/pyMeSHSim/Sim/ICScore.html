@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -149,19 +151,19 @@
 <span class="c1"># Organization: HuaZhong Agricultural University</span>
 
 <span class="c1">#!/usr/bin/python3</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">log</span>
-<span class="kn">from</span> <span class="nn">..data</span> <span class="k">import</span> <span class="n">dataDB</span>
-<span class="kn">from</span> <span class="nn">.MeSHProcess</span> <span class="k">import</span> <span class="n">MeSHProcess</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">..data</span> <span class="kn">import</span> <span class="n">dataDB</span>
+<span class="kn">from</span> <span class="nn">.MeSHProcess</span> <span class="kn">import</span> <span class="n">MeSHProcess</span>
 <span class="kn">import</span> <span class="nn">bcolz</span> <span class="k">as</span> <span class="nn">bz</span>
 
-<div class="viewcode-block" id="InformationContent"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent">[docs]</a><span class="k">class</span> <span class="nc">InformationContent</span><span class="p">(</span><span class="n">MeSHProcess</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent">[docs]</a><span class="k">class</span> <span class="nc">InformationContent</span><span class="p">(</span><span class="n">MeSHProcess</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class implement the IC based similarity.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">MeSHProcess</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">propagationDict</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -188,7 +190,7 @@
         <span class="n">bz1</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;maxIDInCategory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxIDInCategory</span>
         <span class="n">bz1</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-<div class="viewcode-block" id="InformationContent.getFreqDict"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getFreqDict">[docs]</a>    <span class="k">def</span> <span class="nf">getFreqDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.getFreqDict"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getFreqDict">[docs]</a>    <span class="k">def</span> <span class="nf">getFreqDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the IC frequence from MainHeadingDetailData.</span>
 
 <span class="sd">        **parameter**</span>
@@ -221,7 +223,7 @@
         <span class="n">FreqDict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;N/A&quot;</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">freqValue</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">FreqDict</span></div>
 
-<div class="viewcode-block" id="InformationContent.getICDict"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getICDict">[docs]</a>    <span class="k">def</span> <span class="nf">getICDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.getICDict"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getICDict">[docs]</a>    <span class="k">def</span> <span class="nf">getICDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to check whole IC value.</span>
 
 <span class="sd">        It takes long time.</span>
@@ -260,7 +262,7 @@
                 <span class="n">ICDict</span><span class="p">[</span><span class="n">dui</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">ICDict</span></div>
 
-<div class="viewcode-block" id="InformationContent.getMeSHIC"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getMeSHIC">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIC</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.getMeSHIC"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.getMeSHIC">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIC</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to get IC value from a MeSH ID.</span>
 
 <span class="sd">        **parameter**</span>
@@ -306,7 +308,7 @@
         <span class="k">return</span> <span class="n">maxIC</span>
 
 
-<div class="viewcode-block" id="InformationContent.findLeastCommonSubsumerbyTreeCode"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.findLeastCommonSubsumerbyTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">findLeastCommonSubsumerbyTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.findLeastCommonSubsumerbyTreeCode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.findLeastCommonSubsumerbyTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">findLeastCommonSubsumerbyTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to find the least common subsumer by treeCode.</span>
 
 <span class="sd">        **parameter**</span>
@@ -361,7 +363,7 @@
                 <span class="n">subsumerDuis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dui</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">subsumerDuis</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="InformationContent.compareTreecode"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.compareTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">compareTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.compareTreecode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.compareTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">compareTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get shared part of two tree code.</span>
 
 <span class="sd">        **parameter**</span>
@@ -379,7 +381,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">array1</span> <span class="o">=</span> <span class="n">code1</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
         <span class="n">array2</span> <span class="o">=</span> <span class="n">code2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">array2</span><span class="p">))</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">array1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">array2</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">array1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">array2</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
@@ -402,7 +404,7 @@
             <span class="n">dui</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDuiFromTreeCode</span><span class="p">(</span><span class="n">treeCode</span><span class="o">=</span><span class="n">treeCode</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">dui</span></div>
 
-<div class="viewcode-block" id="InformationContent.findLeastCommonSubsumerbyAncestor"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.findLeastCommonSubsumerbyAncestor">[docs]</a>    <span class="k">def</span> <span class="nf">findLeastCommonSubsumerbyAncestor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.findLeastCommonSubsumerbyAncestor"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.findLeastCommonSubsumerbyAncestor">[docs]</a>    <span class="k">def</span> <span class="nf">findLeastCommonSubsumerbyAncestor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to find the least common subsumer by ancestor.</span>
 
 <span class="sd">        **parameter**</span>
@@ -444,7 +446,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">common</span></div>
 
-<div class="viewcode-block" id="InformationContent.simil"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.simil">[docs]</a>    <span class="k">def</span> <span class="nf">simil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.simil"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.simil">[docs]</a>    <span class="k">def</span> <span class="nf">simil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;The ic algorithm.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -464,7 +466,7 @@
             <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">dui1</span> <span class="o">==</span> <span class="n">dui2</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="n">maxic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getMaxICInCategory</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
         <span class="n">ic1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getMeSHIC</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="n">dui1</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">maxic</span><span class="p">)</span>
@@ -493,7 +495,7 @@
         <span class="n">rel</span> <span class="o">=</span> <span class="n">lin</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span> <span class="n">ictmp</span> <span class="o">*</span> <span class="n">maxic</span><span class="p">)))</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lin</span><span class="p">,</span> <span class="n">jiang</span><span class="p">,</span> <span class="n">rel</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="InformationContent.calICSimilarity"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.calICSimilarity">[docs]</a>    <span class="k">def</span> <span class="nf">calICSimilarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="InformationContent.calICSimilarity"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.ICScore.InformationContent.calICSimilarity">[docs]</a>    <span class="k">def</span> <span class="nf">calICSimilarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calculating the term similarity based on information content.</span>
 
 <span class="sd">        **parameter**</span>
@@ -516,7 +518,6 @@
 
 <span class="sd">        float</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">lin</span><span class="p">,</span> <span class="n">jiang</span><span class="p">,</span> <span class="n">rel</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">simil</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="n">dui1</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="n">dui2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lin&quot;</span><span class="p">,</span> <span class="s2">&quot;res&quot;</span><span class="p">,</span> <span class="s2">&quot;jiang&quot;</span><span class="p">,</span> <span class="s2">&quot;rel&quot;</span><span class="p">]:</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;program has no method </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
@@ -544,7 +545,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -561,32 +562,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

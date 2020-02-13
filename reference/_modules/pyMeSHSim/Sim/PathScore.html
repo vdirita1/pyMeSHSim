@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -149,17 +151,17 @@
 <span class="c1"># Organization: HuaZhong Agricultural University</span>
 
 <span class="c1">#!/usr/bin/python3</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">.ICScore</span> <span class="k">import</span> <span class="n">InformationContent</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">.ICScore</span> <span class="kn">import</span> <span class="n">InformationContent</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<div class="viewcode-block" id="pathMethod"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.PathScore.pathMethod">[docs]</a><span class="k">class</span> <span class="nc">pathMethod</span><span class="p">(</span><span class="n">InformationContent</span><span class="p">):</span>
+<div class="viewcode-block" id="pathMethod"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.PathScore.pathMethod">[docs]</a><span class="k">class</span> <span class="nc">pathMethod</span><span class="p">(</span><span class="n">InformationContent</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class implement the path based similarity.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">InformationContent</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">pass</span>
 
-<div class="viewcode-block" id="pathMethod.pathSim"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.pathSim">[docs]</a>    <span class="k">def</span> <span class="nf">pathSim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="pathMethod.pathSim"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.pathSim">[docs]</a>    <span class="k">def</span> <span class="nf">pathSim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Shortest path measurement.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">cui1</span> <span class="o">==</span> <span class="n">cui2</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
@@ -171,7 +173,7 @@
 
 
 
-<div class="viewcode-block" id="pathMethod.findShortestPath"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.findShortestPath">[docs]</a>    <span class="k">def</span> <span class="nf">findShortestPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="pathMethod.findShortestPath"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.findShortestPath">[docs]</a>    <span class="k">def</span> <span class="nf">findShortestPath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">cui1</span> <span class="o">==</span> <span class="n">cui2</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
         <span class="n">visited1</span><span class="p">,</span> <span class="n">visited2</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
@@ -360,7 +362,7 @@
 
 
 
-<div class="viewcode-block" id="pathMethod.calPathSimilarity"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.calPathSimilarity">[docs]</a>    <span class="k">def</span> <span class="nf">calPathSimilarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="pathMethod.calPathSimilarity"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.PathScore.pathMethod.calPathSimilarity">[docs]</a>    <span class="k">def</span> <span class="nf">calPathSimilarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.7</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calculating the term similarity based on term path.</span>
 
 <span class="sd">        This is the &quot;wang&quot; method.</span>
@@ -377,6 +379,9 @@
 <span class="sd">            A MeSH category.</span>
 <span class="sd">            One of the value in (&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;, &#39;K&#39;, &#39;L&#39;, &#39;M&#39;, &#39;N&#39;, &#39;V&#39;, &#39;Z&#39;).</span>
 <span class="sd">            It can&#39;t be None.</span>
+
+<span class="sd">        weight: float</span>
+<span class="sd">            it should be 0~1.</span>
 
 <span class="sd">        **return**</span>
 
@@ -404,8 +409,8 @@
         <span class="k">if</span> <span class="n">dui1</span> <span class="o">==</span> <span class="n">dui2</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
 
-        <span class="n">SV1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getSV</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="n">dui1</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
-        <span class="n">SV2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getSV</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="n">dui2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
+        <span class="n">SV1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getSV</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="n">dui1</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">SV2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getSV</span><span class="p">(</span><span class="n">dui</span><span class="o">=</span><span class="n">dui2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">intersection</span> <span class="o">=</span> <span class="n">SV1</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">SV2</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="n">interSV1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">SV1</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">intersection</span><span class="p">])</span>
         <span class="n">interSV2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">SV2</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">intersection</span><span class="p">])</span>
@@ -426,7 +431,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -443,32 +448,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

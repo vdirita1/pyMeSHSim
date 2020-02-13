@@ -17,34 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
     <link rel="prev" title="Welcome to pyMeSHSim’s documentation!" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -194,31 +196,28 @@ between the MeSH terms.</p>
 <div class="section" id="currently-pymeshsim-consists-of-three-subpackages">
 <h3>Currently, pyMeSHSim consists of three subpackages:<a class="headerlink" href="#currently-pymeshsim-consists-of-three-subpackages" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>data subpackage</dt>
-<dd><ul class="first last">
-<li>The data subpackage has reorganized the MeSH information in bcolz format.</li>
-<li>It is lightweight and data-rich.</li>
-<li>It contained the main heading concepts, unique DescriptorUI, MeSH Tree code, and correspond UMLS ID.</li>
-<li>It contained all narrow concepts of the main heading concepts. It reserved the parent-child relationships and RN/RB relationships for all concepts.</li>
+<li><dl class="simple">
+<dt>data subpackage</dt><dd><ul>
+<li><p>The data subpackage has reorganized the MeSH information in bcolz format.</p></li>
+<li><p>It is lightweight and data-rich.</p></li>
+<li><p>It contained the main heading concepts, unique DescriptorUI, MeSH Tree code, and correspond UMLS ID.</p></li>
+<li><p>It contained all narrow concepts of the main heading concepts. It reserved the parent-child relationships and RN/RB relationships for all concepts.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>metamapWrap subpackage</dt>
-<dd><ul class="first last">
-<li>It provided some filter rules for parsing the free text.</li>
-<li>It provided a unified interface to create the MeSH concept objects.</li>
+<li><dl class="simple">
+<dt>metamapWrap subpackage</dt><dd><ul>
+<li><p>It provided some filter rules for parsing the free text.</p></li>
+<li><p>It provided a unified interface to create the MeSH concept objects.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Sim subpackage</dt>
-<dd><ul class="first last">
-<li>It provided useful APIs to retrieve the MeSH dataset.</li>
-<li>It implemented four methods of semantic similarity measures based on information content.It implemented one method of semantic similarity measures based on path.</li>
+<li><dl class="simple">
+<dt>Sim subpackage</dt><dd><ul>
+<li><p>It provided useful APIs to retrieve the MeSH dataset.</p></li>
+<li><p>It implemented four methods of semantic similarity measures based on information content.It implemented one method of semantic similarity measures based on path.</p></li>
 </ul>
 </dd>
 </dl>
@@ -244,7 +243,7 @@ between the MeSH terms.</p>
         <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Welcome to pyMeSHSim’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to pyMeSHSim’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -253,7 +252,7 @@ between the MeSH terms.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -270,32 +269,16 @@ between the MeSH terms.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

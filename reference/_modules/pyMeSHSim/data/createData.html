@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -155,7 +157,7 @@
 
 <span class="c1">#!/usr/bin/python3</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">.dataDB</span> <span class="k">import</span> <span class="n">dataDB</span>
+<span class="kn">from</span> <span class="nn">.dataDB</span> <span class="kn">import</span> <span class="n">dataDB</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">bcolz</span> <span class="k">as</span> <span class="nn">bz</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -164,17 +166,17 @@
 <span class="kn">import</span> <span class="nn">re</span>
 
 
-<div class="viewcode-block" id="getCuiFunc"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc">[docs]</a><span class="k">class</span> <span class="nc">getCuiFunc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc">[docs]</a><span class="k">class</span> <span class="nc">getCuiFunc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get data from umls database.</span>
 
 <span class="sd">    | This is the base class of createBcolzData.</span>
 <span class="sd">    | It provides interface to get MeSH information from UMLS Metathesaurus.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">DBclient</span> <span class="o">=</span> <span class="n">dataDB</span><span class="p">()</span>
 
-<div class="viewcode-block" id="getCuiFunc.getSemanticType"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getSemanticType">[docs]</a>    <span class="k">def</span> <span class="nf">getSemanticType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getSemanticType"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getSemanticType">[docs]</a>    <span class="k">def</span> <span class="nf">getSemanticType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the semantic type of a UMLS concept.</span>
 
 <span class="sd">        **parameter**</span>
@@ -193,7 +195,7 @@
         <span class="n">semanticType</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">semanticType</span></div>
 
-<div class="viewcode-block" id="getCuiFunc.getTreeCode"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">getTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getTreeCode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">getTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get MeSH tree code from a UMLS concept or a MeSH concept.</span>
 
 <span class="sd">        **parameter**</span>
@@ -222,7 +224,7 @@
             <span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">return</span> <span class="n">d</span></div>
 
-<div class="viewcode-block" id="getCuiFunc.getMeSHID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getMeSHID">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getMeSHID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getMeSHID">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the MeSH concept from an UMLS concept.</span>
 
 <span class="sd">        This function can only get the mesh ID from the preferred concept CUI.</span>
@@ -244,7 +246,7 @@
 
 
 
-<div class="viewcode-block" id="getCuiFunc.getMeSHIDFromTH"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getMeSHIDFromTH">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIDFromTH</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getMeSHIDFromTH"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getMeSHIDFromTH">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIDFromTH</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the MeSH descriptor ID or SCR ID.</span>
 
 <span class="sd">        This function will be used only when getMeSHID has no result.</span>
@@ -265,7 +267,7 @@
         <span class="k">return</span> <span class="n">MeSHID</span></div>
 
 
-<div class="viewcode-block" id="getCuiFunc.getCUIfromMeshID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getCUIfromMeshID">[docs]</a>    <span class="k">def</span> <span class="nf">getCUIfromMeshID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getCUIfromMeshID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getCUIfromMeshID">[docs]</a>    <span class="k">def</span> <span class="nf">getCUIfromMeshID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the UMLS concept from a MeSH concept.</span>
 
 <span class="sd">        This function will not return all the CUI of a MeSH descriptor. it will only</span>
@@ -286,7 +288,7 @@
         <span class="n">cui</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">cui</span></div>
 
-<div class="viewcode-block" id="getCuiFunc.getAllCUIsFromMeshID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getAllCUIsFromMeshID">[docs]</a>    <span class="k">def</span> <span class="nf">getAllCUIsFromMeshID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getAllCUIsFromMeshID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getAllCUIsFromMeshID">[docs]</a>    <span class="k">def</span> <span class="nf">getAllCUIsFromMeshID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function will return all the CUI of a MeSH descriptor.</span>
 
 <span class="sd">        **parameter**</span>
@@ -304,7 +306,7 @@
         <span class="k">return</span> <span class="n">result</span></div>
 
 
-<div class="viewcode-block" id="getCuiFunc.getPreferredName"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getPreferredName">[docs]</a>    <span class="k">def</span> <span class="nf">getPreferredName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getPreferredName"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getPreferredName">[docs]</a>    <span class="k">def</span> <span class="nf">getPreferredName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the preferred name of an UMLS concept.</span>
 
 <span class="sd">        **parameter**</span>
@@ -320,7 +322,7 @@
         <span class="n">preferred_name</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">preferred_name</span></div>
 
-<div class="viewcode-block" id="getCuiFunc.getCodeForNoneTreeConcept"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getCodeForNoneTreeConcept">[docs]</a>    <span class="k">def</span> <span class="nf">getCodeForNoneTreeConcept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getCodeForNoneTreeConcept"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getCodeForNoneTreeConcept">[docs]</a>    <span class="k">def</span> <span class="nf">getCodeForNoneTreeConcept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function used to fetch the UMLSID for relation narrow concept.</span>
 
 <span class="sd">        **parameter**</span>
@@ -342,7 +344,7 @@
                 <span class="k">return</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="getCuiFunc.getQualifierID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.getCuiFunc.getQualifierID">[docs]</a>    <span class="k">def</span> <span class="nf">getQualifierID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="getCuiFunc.getQualifierID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.getCuiFunc.getQualifierID">[docs]</a>    <span class="k">def</span> <span class="nf">getQualifierID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; This function used to get the qualifier id of a umls concept.</span>
 
 <span class="sd">        **parameter**</span>
@@ -360,7 +362,7 @@
         <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
 
 
-<div class="viewcode-block" id="createBcolzData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData">[docs]</a><span class="k">class</span> <span class="nc">createBcolzData</span><span class="p">(</span><span class="n">getCuiFunc</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData">[docs]</a><span class="k">class</span> <span class="nc">createBcolzData</span><span class="p">(</span><span class="n">getCuiFunc</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A class to construct the base data.</span>
 
 <span class="sd">    This class include several functions, which used to create different tables.</span>
@@ -382,7 +384,7 @@
     <span class="c1"># &#39;preferred_name&#39;: &#39;MeSH Descriptors&#39;, &#39;isNarrowConcept&#39;: None, &#39;relations&#39;: None}</span>
     <span class="c1"># {&#39;cui&#39;: &#39;C1256743&#39;, &#39;semtypes&#39;: &#39;inpr&#39;, &#39;tree_code&#39;: [], &#39;MeSHID&#39;: None,</span>
     <span class="c1"># &#39;preferred_name&#39;: &#39;Publication Type&#39;, &#39;isNarrowConcept&#39;: None, &#39;relations&#39;: None}</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_file_name</span><span class="o">=</span><span class="s2">&quot;createData.log&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_file_name</span><span class="o">=</span><span class="s2">&quot;createData.log&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">DBclient</span> <span class="o">=</span> <span class="n">dataDB</span><span class="p">()</span>
         <span class="n">getCuiFunc</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">categoryDict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C0002784&quot;</span><span class="p">:</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span>
@@ -403,7 +405,7 @@
                              <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="createBcolzData.initLog"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.initLog">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="createBcolzData.initLog"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.initLog">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">initLog</span><span class="p">(</span><span class="n">log_file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Static method used to initalize the logger.&quot;&quot;&quot;</span>
 
@@ -421,7 +423,7 @@
         <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">logger</span></div>
 
-<div class="viewcode-block" id="createBcolzData.createParentChildRelTable"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createParentChildRelTable">[docs]</a>    <span class="k">def</span> <span class="nf">createParentChildRelTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;PAR&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createParentChildRelTable"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createParentChildRelTable">[docs]</a>    <span class="k">def</span> <span class="nf">createParentChildRelTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;PAR&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct the parent-child relation table, and top concept description table.</span>
 
 <span class="sd">        | Parent-child relation table has three columns &quot;Child&quot;, &quot;Parent&quot;, &quot;Category&quot;.</span>
@@ -553,7 +555,7 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Done the create parents function</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="createBcolzData.parseParentChildLog"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.parseParentChildLog">[docs]</a>    <span class="k">def</span> <span class="nf">parseParentChildLog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.parseParentChildLog"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.parseParentChildLog">[docs]</a>    <span class="k">def</span> <span class="nf">parseParentChildLog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get all category and its abbreviation.</span>
 
 <span class="sd">        This data will be store as attributes in MainHeadingDetailData table.</span>
@@ -578,7 +580,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="n">ab</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">allCategory</span><span class="p">[</span><span class="n">ab</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">allCategory</span></div>
 
-<div class="viewcode-block" id="createBcolzData.getDiseaseTopDescriptors"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.getDiseaseTopDescriptors">[docs]</a>    <span class="k">def</span> <span class="nf">getDiseaseTopDescriptors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.getDiseaseTopDescriptors"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.getDiseaseTopDescriptors">[docs]</a>    <span class="k">def</span> <span class="nf">getDiseaseTopDescriptors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get top descriptors in disease category.</span>
 
 <span class="sd">        This data will be store as attributes in MainHeadingDetailData table.</span>
@@ -605,7 +607,7 @@
         <span class="k">return</span> <span class="n">diseaseTopDescriptors</span></div>
 
 
-<div class="viewcode-block" id="createBcolzData.checkParentData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.checkParentData">[docs]</a>    <span class="k">def</span> <span class="nf">checkParentData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.checkParentData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.checkParentData">[docs]</a>    <span class="k">def</span> <span class="nf">checkParentData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to compare the data with &quot;MeSH.Hsa.eg.db&quot;</span>
 
 <span class="sd">        We get the data in R packages &quot;meshes&quot;, store all its mesh concept in uniqueconcept.tsv</span>
@@ -642,7 +644,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">diff_li2</span><span class="p">)</span>
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="createBcolzData.createRNandRBRelTable"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createRNandRBRelTable">[docs]</a>    <span class="k">def</span> <span class="nf">createRNandRBRelTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createRNandRBRelTable"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createRNandRBRelTable">[docs]</a>    <span class="k">def</span> <span class="nf">createRNandRBRelTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method used to create the RNandRBRel table.</span>
 
 <span class="sd">        In fact, we mainly focus on the disease category.</span>
@@ -723,7 +725,7 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Done the create RNtoRB function</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="createBcolzData.checkRNData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.checkRNData">[docs]</a>    <span class="k">def</span> <span class="nf">checkRNData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.checkRNData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.checkRNData">[docs]</a>    <span class="k">def</span> <span class="nf">checkRNData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check the RN data.&quot;&quot;&quot;</span>
 
         <span class="n">logFile</span> <span class="o">=</span> <span class="s2">&quot;createRNandRBRelTable.log&quot;</span>
@@ -741,7 +743,7 @@
                 <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="createBcolzData.createSupMainHeadingDetailData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createSupMainHeadingDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createSupMainHeadingDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createSupMainHeadingDetailData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createSupMainHeadingDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createSupMainHeadingDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the supplement detail information for main heading descriptors.</span>
 
 <span class="sd">        | As the UMLS ID to MeSH ID is not &quot;one to one&quot;, but &quot;more to one&quot;</span>
@@ -782,7 +784,7 @@
         <span class="k">return</span></div>
 
 
-<div class="viewcode-block" id="createBcolzData.getCategoryOfTreecode"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.getCategoryOfTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">getCategoryOfTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.getCategoryOfTreecode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.getCategoryOfTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">getCategoryOfTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the MeSH concept category from its tree code.</span>
 
 <span class="sd">        **parameter**</span>
@@ -803,7 +805,7 @@
             <span class="n">letterList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">letterList</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">letterList</span></div>
 
-<div class="viewcode-block" id="createBcolzData.createMainHeadingDetailData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createMainHeadingDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createMainHeadingDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createMainHeadingDetailData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createMainHeadingDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createMainHeadingDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the detail information for main heading descriptors.</span>
 
 <span class="sd">        This table include the mesh id, correspondent umls id, but only include the UMLS id which has MN attribute.</span>
@@ -887,7 +889,7 @@
         <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="createBcolzData.createRNDetailData"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createRNDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createRNDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createRNDetailData"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createRNDetailData">[docs]</a>    <span class="k">def</span> <span class="nf">createRNDetailData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create RN concept detail information table.</span>
 
 <span class="sd">        | This function will only create detail information of the RNconcept included in RNandRBRel table.</span>
@@ -929,7 +931,7 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Done the create RN detail data function</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="createBcolzData.createOffspringAndAncestorRel"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.createOffspringAndAncestorRel">[docs]</a>    <span class="k">def</span> <span class="nf">createOffspringAndAncestorRel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.createOffspringAndAncestorRel"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.createOffspringAndAncestorRel">[docs]</a>    <span class="k">def</span> <span class="nf">createOffspringAndAncestorRel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function used to create the offspring and ancestor relation of main heading descriptors.</span>
 
 <span class="sd">        It is based on tne ParentChildRel.tsv</span>
@@ -979,7 +981,7 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Done create offspring and ancestor rel table</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span></div>
 
-<div class="viewcode-block" id="createBcolzData.constructBcolz"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.createData.createBcolzData.constructBcolz">[docs]</a>    <span class="k">def</span> <span class="nf">constructBcolz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="createBcolzData.constructBcolz"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.createData.createBcolzData.constructBcolz">[docs]</a>    <span class="k">def</span> <span class="nf">constructBcolz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This funtion will convert above tables in bcolz format.&quot;&quot;&quot;</span>
 
         <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Running the construct Bcolz function</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1084,7 +1086,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -1101,32 +1103,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

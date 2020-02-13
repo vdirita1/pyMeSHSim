@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -151,10 +153,10 @@
 <span class="c1">#!/usr/bin/python3</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">..data.dataInterface</span> <span class="k">import</span> <span class="n">dataHandle</span>
+<span class="kn">from</span> <span class="nn">..data.dataInterface</span> <span class="kn">import</span> <span class="n">dataHandle</span>
 
 
-<div class="viewcode-block" id="duiFunc"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc">[docs]</a><span class="k">class</span> <span class="nc">duiFunc</span><span class="p">(</span><span class="n">dataHandle</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc">[docs]</a><span class="k">class</span> <span class="nc">duiFunc</span><span class="p">(</span><span class="n">dataHandle</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is an base class for MeSH concept retrive its diffirent attribute.</span>
 
 <span class="sd">    | It contains MeSH ID, UMLSID, Tree Code, Preffered Name, Category.</span>
@@ -175,7 +177,7 @@
 <span class="sd">        data cache for RNtoRBData.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">dataHandle</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parChdRelData</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">MainHeadingDetailData</span> <span class="o">=</span> <span class="kc">None</span>
@@ -186,7 +188,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">offspringAncestorDataInCategory</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">MainHeadingDetailDataInCategory</span> <span class="o">=</span> <span class="p">{}</span>
 
-<div class="viewcode-block" id="duiFunc.checkDui"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.checkDui">[docs]</a>    <span class="k">def</span> <span class="nf">checkDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.checkDui"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.checkDui">[docs]</a>    <span class="k">def</span> <span class="nf">checkDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check the MeSH ID, if it is legal.</span>
 
 <span class="sd">        | The MeSH heading concept starts with a capital letter &quot;D&quot;,</span>
@@ -215,7 +217,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="duiFunc.checkCui"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.checkCui">[docs]</a>    <span class="k">def</span> <span class="nf">checkCui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.checkCui"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.checkCui">[docs]</a>    <span class="k">def</span> <span class="nf">checkCui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Check the UMLS ID, if it is legal.</span>
 
 <span class="sd">        | The UMLS concept starts with a capital letter &quot;C&quot;,</span>
@@ -236,7 +238,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="duiFunc.selectDataByDui"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.selectDataByDui">[docs]</a>    <span class="k">def</span> <span class="nf">selectDataByDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selectCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">queryCol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.selectDataByDui"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.selectDataByDui">[docs]</a>    <span class="k">def</span> <span class="nf">selectDataByDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selectCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">queryCol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Selecting value in diffirent table.</span>
 
 <span class="sd">        **parameter**</span>
@@ -279,7 +281,7 @@
                 <span class="k">return</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">result</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="duiFunc.selectDataByCui"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.selectDataByCui">[docs]</a>    <span class="k">def</span> <span class="nf">selectDataByCui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selectCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">queryCol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.selectDataByCui"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.selectDataByCui">[docs]</a>    <span class="k">def</span> <span class="nf">selectDataByCui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">selectCol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">queryCol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Select value in diffirent pandas dataframe, not suggestion.</span>
 
 <span class="sd">        **parameter**</span>
@@ -322,7 +324,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">result</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="duiFunc.getSemanticType"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getSemanticType">[docs]</a>    <span class="k">def</span> <span class="nf">getSemanticType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getSemanticType"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getSemanticType">[docs]</a>    <span class="k">def</span> <span class="nf">getSemanticType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Useing mesh ID or UMLS ID to get the concept semantic type.</span>
 
 <span class="sd">        We suggest to use dui retrive the semantic type.</span>
@@ -369,7 +371,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="duiFunc.getMeSHTreecode"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getMeSHTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getMeSHTreecode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getMeSHTreecode">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHTreecode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Use mesh ID or UMLS ID to get the concept tree code.</span>
 
 <span class="sd">        **parameter**</span>
@@ -414,7 +416,7 @@
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selectDataByCui</span><span class="p">(</span><span class="n">cui</span><span class="o">=</span><span class="n">cui</span><span class="p">,</span> <span class="n">selectCol</span><span class="o">=</span><span class="s2">&quot;Tree_Code&quot;</span><span class="p">,</span> <span class="n">queryCol</span><span class="o">=</span><span class="s2">&quot;UMLSID&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="duiFunc.getMeSHIDbyUMLSID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getMeSHIDbyUMLSID">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIDbyUMLSID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getMeSHIDbyUMLSID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getMeSHIDbyUMLSID">[docs]</a>    <span class="k">def</span> <span class="nf">getMeSHIDbyUMLSID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get MeSH ID from UMLS ID.</span>
 
 <span class="sd">        | This function will query three tables:</span>
@@ -477,7 +479,7 @@
             <span class="n">MeSHID</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">result</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">MeSHID</span>
 
-<div class="viewcode-block" id="duiFunc.getUMLSIDbyMeSHID"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getUMLSIDbyMeSHID">[docs]</a>    <span class="k">def</span> <span class="nf">getUMLSIDbyMeSHID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getUMLSIDbyMeSHID"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getUMLSIDbyMeSHID">[docs]</a>    <span class="k">def</span> <span class="nf">getUMLSIDbyMeSHID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get UMLS ID from MeSH ID.</span>
 
 <span class="sd">        | This function only return the preferred UMLS concept.</span>
@@ -502,7 +504,7 @@
             <span class="n">UMLSID</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">UMLSID</span></div>
 
-<div class="viewcode-block" id="duiFunc.getPrefferedName"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getPrefferedName">[docs]</a>    <span class="k">def</span> <span class="nf">getPrefferedName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getPrefferedName"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getPrefferedName">[docs]</a>    <span class="k">def</span> <span class="nf">getPrefferedName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Use mesh ID or UMLS ID to get the concept prefferd name.</span>
 
 <span class="sd">        We suggest to use dui get preffered name.</span>
@@ -549,7 +551,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="duiFunc.getCategory"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getCategory"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the concept category by MeSH id or UMLS ID.</span>
 
 <span class="sd">        | For main heading concept, the category is its tree code first letter.</span>
@@ -610,7 +612,7 @@
                     <span class="k">return</span> <span class="kc">None</span>
                 <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">result</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="duiFunc.getDuiFromTreeCode"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getDuiFromTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">getDuiFromTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treeCode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getDuiFromTreeCode"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getDuiFromTreeCode">[docs]</a>    <span class="k">def</span> <span class="nf">getDuiFromTreeCode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">treeCode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Only the main heading concept has tree code.</span>
 
 <span class="sd">        **parameter**</span>
@@ -642,7 +644,7 @@
             <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;this is an invalid tree code</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="duiFunc.getFrequenceByDui"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getFrequenceByDui">[docs]</a>    <span class="k">def</span> <span class="nf">getFrequenceByDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getFrequenceByDui"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getFrequenceByDui">[docs]</a>    <span class="k">def</span> <span class="nf">getFrequenceByDui</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function will return the counts of the concept which retrived in a specific text(pubmed article) set</span>
 
 <span class="sd">        | Only the main heading concept has this attribute.</span>
@@ -672,7 +674,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="duiFunc.getAllMHsConceptInOneCategory"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getAllMHsConceptInOneCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getAllMHsConceptInOneCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getAllMHsConceptInOneCategory"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getAllMHsConceptInOneCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getAllMHsConceptInOneCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get all MHs in one category.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">MainHeadingDetailDataInCategory</span><span class="p">:</span>
             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getMainHeadingDetailData</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
@@ -682,7 +684,7 @@
         <span class="n">conceptList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;MeSHID&quot;</span><span class="p">])))</span>
         <span class="k">return</span> <span class="n">conceptList</span></div>
 
-<div class="viewcode-block" id="duiFunc.getAllSCRsConceptInOneCategory"><a class="viewcode-back" href="../../../data.html#pyMeSHSim.data.duiFunc.duiFunc.getAllSCRsConceptInOneCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getAllSCRsConceptInOneCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="duiFunc.getAllSCRsConceptInOneCategory"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.data.html#pyMeSHSim.data.duiFunc.duiFunc.getAllSCRsConceptInOneCategory">[docs]</a>    <span class="k">def</span> <span class="nf">getAllSCRsConceptInOneCategory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get all SCRs in one category.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">RNRBRelDataInCategory</span><span class="p">:</span>
             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getRelData</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;RNandRBRel&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
@@ -703,7 +705,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -720,32 +722,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

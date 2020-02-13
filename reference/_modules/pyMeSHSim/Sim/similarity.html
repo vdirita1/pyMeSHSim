@@ -17,32 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -150,16 +152,16 @@
 
 
 <span class="c1">#!/usr/bin/python3</span>
-<span class="kn">from</span> <span class="nn">.PathScore</span> <span class="k">import</span> <span class="n">pathMethod</span>
-<span class="kn">from</span> <span class="nn">..metamapWrap.MetamapInterface</span> <span class="k">import</span> <span class="n">MetaMap</span>
+<span class="kn">from</span> <span class="nn">.PathScore</span> <span class="kn">import</span> <span class="n">pathMethod</span>
+<span class="kn">from</span> <span class="nn">..metamapWrap.MetamapInterface</span> <span class="kn">import</span> <span class="n">MetaMap</span>
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">copy</span>
 
-<div class="viewcode-block" id="termComp"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.similarity.termComp">[docs]</a><span class="k">class</span> <span class="nc">termComp</span><span class="p">(</span><span class="n">pathMethod</span><span class="p">):</span>
+<div class="viewcode-block" id="termComp"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.similarity.termComp">[docs]</a><span class="k">class</span> <span class="nc">termComp</span><span class="p">(</span><span class="n">pathMethod</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">pathMethod</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="termComp.termSim"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.similarity.termComp.termSim">[docs]</a>    <span class="k">def</span> <span class="nf">termSim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="termComp.termSim"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.similarity.termComp.termSim">[docs]</a>    <span class="k">def</span> <span class="nf">termSim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dui1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.7</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function used to measure the distance between two MeSH terms. including MHs and SCRs.</span>
 
 <span class="sd">        **parameter**</span>
@@ -215,25 +217,27 @@
 
 
         <span class="n">score_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1">#print(category)</span>
         <span class="k">for</span> <span class="n">con1</span> <span class="ow">in</span> <span class="n">term_list_1</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">con2</span> <span class="ow">in</span> <span class="n">term_list_2</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;lin&quot;</span><span class="p">,</span> <span class="s2">&quot;res&quot;</span><span class="p">,</span> <span class="s2">&quot;jiang&quot;</span><span class="p">,</span> <span class="s2">&quot;rel&quot;</span><span class="p">]:</span>
                     <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calICSimilarity</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="n">con1</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="n">con2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;wang&quot;</span><span class="p">:</span>
-                    <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calPathSimilarity</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="n">con1</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="n">con2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
+                    <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calPathSimilarity</span><span class="p">(</span><span class="n">dui1</span><span class="o">=</span><span class="n">con1</span><span class="p">,</span> <span class="n">dui2</span><span class="o">=</span><span class="n">con2</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
                 <span class="n">score_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dui1</span><span class="p">,</span> <span class="n">dui2</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+                <span class="c1">#print(&quot;%s\t%s\t%s\n&quot; % (dui1, dui2, score))</span>
 
-        <span class="k">return</span> <span class="n">score_list</span></div></div>
+        <span class="n">max_score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">score_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">max_score</span></div></div>
 
-<div class="viewcode-block" id="metamapFilter"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.similarity.metamapFilter">[docs]</a><span class="k">class</span> <span class="nc">metamapFilter</span><span class="p">(</span><span class="n">MetaMap</span><span class="p">,</span> <span class="n">pathMethod</span><span class="p">):</span>
+<div class="viewcode-block" id="metamapFilter"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.similarity.metamapFilter">[docs]</a><span class="k">class</span> <span class="nc">metamapFilter</span><span class="p">(</span><span class="n">MetaMap</span><span class="p">,</span> <span class="n">pathMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class inherits from MetaMap and pathMethod.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">MetaMap</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
         <span class="n">pathMethod</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-<div class="viewcode-block" id="metamapFilter.discardAncestor"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.similarity.metamapFilter.discardAncestor">[docs]</a>    <span class="k">def</span> <span class="nf">discardAncestor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">concepts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="metamapFilter.discardAncestor"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.similarity.metamapFilter.discardAncestor">[docs]</a>    <span class="k">def</span> <span class="nf">discardAncestor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">concepts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Discard the ancestor concept in one parse result.</span>
 
 <span class="sd">        **parameter**</span>
@@ -279,7 +283,7 @@
         <span class="k">return</span> <span class="n">new_concept</span></div>
 
 
-<div class="viewcode-block" id="metamapFilter.discardNodeHigh"><a class="viewcode-back" href="../../../Sim.html#pyMeSHSim.Sim.similarity.metamapFilter.discardNodeHigh">[docs]</a>    <span class="k">def</span> <span class="nf">discardNodeHigh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">concepts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="metamapFilter.discardNodeHigh"><a class="viewcode-back" href="../../../_apidoc/pyMeSHSim.Sim.html#pyMeSHSim.Sim.similarity.metamapFilter.discardNodeHigh">[docs]</a>    <span class="k">def</span> <span class="nf">discardNodeHigh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">concepts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This method will discard the concept which is in a high leve, has many offsprings.</span>
 
 
@@ -333,7 +337,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Zhihui Luo.
+        &copy; Copyright 2018, Zhihui Luo
 
     </p>
   </div>
@@ -350,32 +354,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.0.1',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

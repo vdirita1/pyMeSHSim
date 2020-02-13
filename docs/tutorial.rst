@@ -2,6 +2,133 @@
 Tutorial
 ------------
 
+
+
+Important parameters introduction
+==================================
+PyMeSHSim provided three subpackages metamapWrap, Data, and Sim. The Data subpackage was the foundation of metamapWrap and Sim. It contained a redesigned data frame of MeSH terms, including main headings, supplementary concept records, and relations between them. That made MeSH term interpretation more quickly and efficiently. The metamapWrap was the essence of biomedical named entity recognition (bio-NE). It would invoke `metamap <https://metamap.nlm.nih.gov/>`_ to parse the free text. Then, metamapWrap converted the result to MeSH terms through the Data subpackage. Besides the above two functions, Sim had implemented five semantic similarity measurement methods. In totally, the functions of pyMeSHSim could be summarized into 4 point:
+
+- Translating free text to MeSH term
+
+- Lightweight data frame for MeSH
+
+- Plenty of MeSH term library
+
+- Five algorithms to measure semantic distance 
+
+To make pyMeSHSim easier to be underattended and used. We would illustrate all parameters that may affect the performance of it in this tutotial. In addition, we provided a pipeline script as a batch processing example. Users can refer to the pipeline script or design their own program.
+
+MetamapWrap
+^^^^^^^^^^^^
+MetamapWrap was a wrapper for metamap. metamapWrap combined the functions of metamap and the MeSH vocabulary, then realized bio-NE recognition and normalization. it invoked the metamap to parsed free text to UMLS concepts, then converted the UMLS concepts to MeSH terms via the Data subpackage. Although, the metamap `reference <https://metamap.nlm.nih.gov/UsingMetaMap.shtml>`_ had a detail description for its usage, we would introduce some important parameters accompany with pyMeSHSim examples here. The main parameters were listed in extended table 1.
+
+.. list-table:: important parameters in etamapWrap
+   :widths: 25 25 50
+   :header-rows: 1
+
+   * - Parameters
+     - Values
+     - Description
+   * - source 
+     - MSH, MTH, OMIM … . Default is MSH
+     - -R in metamap. Vocabulary source. Restricting the metamap to use which thesaurus to parse the free text.
+   * - semantic_types
+     - inpo,dsyn,phpranab,orgf …
+     - -J in metamap. Semantic type abbrevation. Only including the specific semantic type terms in the result. 
+   * - conjunction
+     - True or False. Default is True
+     - --conj in metamap. Metamap default chunks the input text into short phrase, this parameter means considering the input as one phrase. 
+   * - term_processing
+     - True or False. Default is True
+     - -J in metamap. -z in metamap. Metamap will treat the input as one term. The function is similar with –conj. 
+
+
+- source:
+	While parsing the same text, different vocabulary source could result in different MeSH terms. For example, the same text “Ataxias, Gait”, when we used MeSH, UMLS or OMIM as vocabulary source separately, the parsed UMLS concept are “C0751837”, “C0004134” and “C0751837”. Its corresponding MeSH terms are “'D020234”, 'D001259', “'D020234”. As it showed, the results are inconsistent. pyMeSHSim accepted a list of thesaurus sources in text parsing, but we recommended to use the specific thesaurus source according the subject of one’s research. The default is MSH, which means use MeSH as the specific semantic source. 
+
+>>> from pyMeSHSim.metamapWrap.MetamapInterface import MetaMap
+>>> metamap = MetaMap(path="/home/luozhihui/Software/public_mm/bin/metamap16")
+>>> concept = metamap.runMetaMap(semantic_types=metamap.semanticTypes, text="Ataxias, Gait", source=["MSH"])
+>>> print(concept)    
+[{'index': '00000000', 'mm': 'MMI', 'score': '20.95', 'preferred_name': 'Gait Ataxia', 'cui': 'C0751837', 'semtypes': '[sosy]', 'trigger': '["Gait Ataxia"-tx-1-"Ataxias Gait"-noun-0]', 'location': 'TX', 'pos_info': '0/7,9/4', 'tree_codes': 'C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450', 'MeSHID': 'D020234'}]
+	
+>>> concept = metamap.runMetaMap(semantic_types=metamap.semanticTypes, text="Ataxias, Gait", source=["MTH"])
+>>> print(concept)    
+[{'index': '00000000', 'mm': 'MMI', 'score': '16.26', 'preferred_name': 'Ataxia', 'cui': 'C0004134', 'semtypes': '[sosy]', 'trigger': '["Ataxia"-tx-1-"Ataxias"-noun-0]', 'location': 'TX', 'pos_info': '0/7', 'tree_codes': 'C10.597.350.090;C23.888.592.350.090', 'MeSHID': 'D001259'}]
+
+>>> concept = metamap.runMetaMap(semantic_types=metamap.semanticTypes, text="Ataxias, Gait", source=["OMIM"])
+>>> print(concept)    
+[{'index': '00000000', 'mm': 'MMI', 'score': '20.95', 'preferred_name': 'Gait Ataxia', 'cui': 'C0751837', 'semtypes': '[sosy]', 'trigger': '["Gait ataxia"-tx-1-"Ataxias Gait"-noun-0]', 'location': 'TX', 'pos_info': '0/7,9/4', 'tree_codes': 'C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450', 'MeSHID': 'D020234'}]
+
+- semantic_types:
+	All MeSH main headings were belonged to some kinds of semantic types. Assigning some clear semantic types will be helpful when parsing the free text. For example, the text “breast, cancer”, if we use ‘neop’ as semantic type, the parsed result was ‘Malignant Neoplasms’. But when we use ‘bpoc’ as semantic type, the result was ‘Breast’. The ‘neop’ and ‘bpoc’ means “Neoplastic Process” and “Body Part, Organ, or Organ Component” respectively. All semantic type abbreviations can be seen in the reference (https://metamap.nlm.nih.gov/Docs/SemanticTypes_2018AB.txt). The default semantic types were none, and all semantic would be considered. all disease related sematic types had been embedded in pyMeSHSim, users can define the ‘semantic_types’ as ‘metamap.semanticTypes’ to restrict all parsed result to disease terms.
+
+>>> concept = metamap.runMetaMap( text="breast, cancer", semantic_types=["neop"], conjunction=False, term_processing=False )
+>>> print(concept) 
+[{'index': '00000000', 'mm': 'MMI', 'score': '5.18', 'preferred_name': 'Malignant Neoplasms', 'cui': 'C0006826', 'semtypes': '[neop]', 'trigger': '["Cancer"-tx-1-"cancer"-noun-0]', 'location': 'TX', 'pos_info': '8/6', 'tree_codes': ['C04'], 'MeSHID': 'D009369'}] 
+
+>>> concept = metamap.runMetaMap( text="breast, cancer", semantic_types=["bpoc"], conjunction=False, term_processing=False )
+>>> print(concept)
+[{'index': '00000000', 'mm': 'MMI', 'score': '8.34', 'preferred_name': 'Breast', 'cui': 'C0006141', 'semtypes': '[bpoc]', 'trigger': '["Breast"-tx-1-"breast"-noun-0]', 'location': 'TX', 'pos_info': '0/6', 'tree_codes': 'A01.236', 'MeSHID': 'D001940'}]
+
+- Conjunction and term_processing:
+	The conjunction was new character of metamap from 2016 version 2. In fact, the conjunction and term_processing had similar functions, both would treat the input as one single phrase, will not chunked the input into separate text. While the conjunction is True and term_processing is True, the input text will be treated as one short phrase, when the conjunction is False and term_processing is “False”, the input text will be treated as long sentence, and metamap will try to parse the UMLS concept from part of the sentence. For “Ataxias, Gait”, when we set both parameters “True”, the result is “'Gait Ataxia”, but when we set them “False”, the result would be 'Ataxia' and 'Gait' separately. In pyMeSHSim, if we are parsing a long sentence, we should turn the conjunction and term_processing to “False”. When we are parsing a short sentence, we should turn the Conjunction and term_processing to “True”.
+	The metamap recommended to use term processing together with ignore_word_order. So, we default set the ignore_word_order on True as default. 
+
+>>> concept = metamap.runMetaMap( text="Ataxias, Gait", semantic_types=metamap.semanticTypes)
+>>> print(concept)
+[{'index': '00000000', 'mm': 'MMI', 'score': '20.95', 'preferred_name': 'Gait Ataxia', 'cui': 'C0751837', 'semtypes': '[sosy]', 'trigger': '["Gait Ataxia"-tx-1-"Ataxias Gait"-noun-0]', 'location': 'TX', 'pos_info': '0/7,9/4', 'tree_codes': 'C10.597.350.090.750;C10.597.404.450;C23.888.592.350.090.600;C23.888.592.413.450', 'MeSHID': 'D020234'}]
+
+>>> concept = metamap.runMetaMap( text="Ataxias, Gait", semantic_types=metamap.semanticTypes, conjunction=False, term_processing=False)
+>>> print(concept)
+[{'index': '00000000', 'mm': 'MMI', 'score': '17.80', 'preferred_name': 'Ataxia', 'cui': 'C0004134', 'semtypes': '[sosy]', 'trigger': '["Ataxia"-tx-1-"Ataxias"-noun-0]', 'location': 'TX', 'pos_info': '0/7', 'tree_codes': 'C10.597.350.090;C23.888.592.350.090', 'MeSHID': 'D001259'}, {'index': '00000000', 'mm': 'MMI', 'score': '17.80', 'preferred_name': 'Gait', 'cui': 'C0016928', 'semtypes': '[fndg]', 'trigger': '["Gait"-tx-1-"Gait"-noun-0]', 'location': 'TX', 'pos_info': '9/4', 'tree_codes': 'E01.370.600.250;G11.427.590.530.389', 'MeSHID': 'D005684'}]
+
+The other parameters in metamapWrap are format options. And detail information can be seen in `reference <https://pymeshsim.readthedocs.io/en/latest/reference.html>`_.
+
+Data
+^^^^^
+The data subpackage contained the basic data frame in pyMeSHSim. It had two major functions, constructing MeSH data from UMLS metathesaurus and establishing data application interfaces. The data construction module made the data update easily. And the data application interface module made it possible to be used by other developers. 
+Based on the data subpackage, pyMeSHSim provided a series of useful function as descripted in extended table 2.
+Application interface	Duction description
+
+.. list-table:: library function in data
+   :widths: 25 50
+   :header-rows: 1
+
+   * - function name
+     - Description
+     
+   * - getMeSHConcept 
+     - Obtaining MeSH terms from UMLS concepts
+   * - getMeSHConcept
+     - Obtaining MeSH term detail from MeSH ID
+   * - getUMLSIDbyMeSHID 
+     - Obtaining UMLS concept from MeSH ID
+   * - getCategory 
+     - Obtaining the category of MeSH terms
+   * - convertToNarrow 
+     - Obtaining narrow or broad terms of a mesh term
+   * - getParentsConceptID 
+     - Obtaining parent or child terms of a MeSH term
+   * - getTopConceptID 
+     - Obtaining the top term of a MeSH term
+   * - getAncestors 
+     - Obtaining the MeSH ID by MeSH tree code
+   * - getPrefferedName 
+     - Obtaining the preffered name by MeSH ID
+
+
+The examples of these interfaces could be seen in http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library. 
+
+
+
+
+
+
+
+
+
+
 Parsing free text
 ==================
 
