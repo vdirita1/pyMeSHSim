@@ -4,8 +4,8 @@ Tutorial
 
 
 
-Package introduction
-=====================
+Important parameters introduction
+==================================
 PyMeSHSim provided three subpackages metamapWrap, Data, and Sim. The Data subpackage was the foundation of metamapWrap and Sim. It contained a redesigned data frame of MeSH terms, including main headings, supplementary concept records, and relations between them. That made MeSH term interpretation more quickly and efficiently. The metamapWrap was the essence of biomedical named entity recognition (bio-NE). It would invoke `metamap <https://metamap.nlm.nih.gov/>`_ to parse the free text. Then, metamapWrap converted the result to MeSH terms through the Data subpackage. Besides the above two functions, Sim had implemented five semantic similarity measurement methods. In totally, the functions of pyMeSHSim could be summarized into 4 point:
 
 - Translating free text to MeSH term
@@ -83,7 +83,7 @@ MetamapWrap was a wrapper for metamap. metamapWrap combined the functions of met
 >>> print(concept)
 [{'index': '00000000', 'mm': 'MMI', 'score': '17.80', 'preferred_name': 'Ataxia', 'cui': 'C0004134', 'semtypes': '[sosy]', 'trigger': '["Ataxia"-tx-1-"Ataxias"-noun-0]', 'location': 'TX', 'pos_info': '0/7', 'tree_codes': 'C10.597.350.090;C23.888.592.350.090', 'MeSHID': 'D001259'}, {'index': '00000000', 'mm': 'MMI', 'score': '17.80', 'preferred_name': 'Gait', 'cui': 'C0016928', 'semtypes': '[fndg]', 'trigger': '["Gait"-tx-1-"Gait"-noun-0]', 'location': 'TX', 'pos_info': '9/4', 'tree_codes': 'E01.370.600.250;G11.427.590.530.389', 'MeSHID': 'D005684'}]
 
-The other parameters in metamapWrap are format options. And detail information can be seen in http://pymeshsim.systemsgenetics.cn/index.html.
+The other parameters in metamapWrap are format options. And detail information can be seen in `reference <https://pymeshsim.readthedocs.io/en/latest/reference.html>`_.
 
 Data
 ^^^^^
@@ -118,11 +118,72 @@ Application interface	Duction description
      - Obtaining the preffered name by MeSH ID
 
 
-The examples of these interfaces could be seen in http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library. 
+The examples of these interfaces could be seen in  https://pymeshsim.readthedocs.io/en/latest/tutorial.html#term-library. 
 
 
 
 
+Sim
+^^^^
+PyMeSHSim had implemented five semantic similarity algorithms. Four IC-based algorithms and one graph-based algorithm. The IC-base methods had fixed Algorithm formulas, but the graph-based method could be influenced by a parameter ω weight. We test the ω weight on the GWAS phenotypes. For the MeSH term pairs parsed by Nelson’s group manual work and pyMeSHSim, we calculated the semantic similarity between them. The result was displayed in supplementary table 4. We excluded the term pairs, which had sematic similarities equal to 1 or 0 in all algorithms.
+
+Then, we investigated the increment of semantic similarity when increasing the weight by a step 0.1. As the supplementary figure 1A showed, the semantic similarity increase stably while weight increase. So, if users use Wang’s method to measure the semantic similarity, any weight ω could distinguish MeSH term’s difference in the same extent. To be noticed, different ω is suit for different threshold that indicating a pair of MeSH terms are similar.
+If comparing this method to IC-based methods, ω 0.6 is recommended. As it has a highest correlation with other algorithms compared to other values. (Supplementary figure 1B)
+
+
+
+pipeline script
+==================
+As pyMeSHSim implemented bio-NE recognition, normalization, and comparison functions.  To make it easily used, we provide an example script “pipeline.py” to do batch processing.
+ 
+The example commands were as below:
+    Text parsing::
+
+    $ ./pipeline.py textParse /home/luozhihui/Software/public_mm/bin/metamap16 /home/luozhihui/Project/free_text.reFormat_1.txt /home/luozhihui/Project/output_dir --source=MSH –short
+
+| The input file need to be separated by “|”, and it only has two columns.
+
+.. list-table:: input file one
+   :widths: 50
+
+
+   * - 1|Serum uric acid
+   * - 2|Nephrolithiasis
+   * - 3|Non-albumin protein levels
+   * - 4|Sphingolipid concentrations
+   * - 5|Age-related macular degeneration
+   * - 6|Systemic lupus erythematosus
+   * - 7|Eye color traits    
+   * - 8|Type 1 diabetes autoantibodies
+   * - 9|Type 1 diabetes
+   * - 10|Systolic blood pressure
+    
+
+| We had stored an example of this input file as “free_text.reFormat.txt” in pyMeSHSim. 
+
+    Similarity calculating::
+
+    $ ./pipeline.py simCal ./output_dir/MeSH_term_pair.txt ./output_dir --weight=0.7
+
+| The input file should be MeSH ID pairs, separated by tab. Just like below:
+
+
+.. list-table:: input file two
+   :widths: 50
+
+
+   * - D018932	D018945
+   * - D008589	D008585
+   * - D051436	D007676
+   * - D000418	D012709
+   * - D006526	D019698
+   * - D051436	D007676
+   * - D049971	D006852
+   * - D008548	D010859
+   * - D008548	D010859
+   * - D003176	D003165
+
+We had stored an example of this input file as “MeSH_term_pair.txt” in pyMeSHSim. 
 
 
 

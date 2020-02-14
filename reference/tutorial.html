@@ -85,11 +85,13 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#package-introduction">Package introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#important-parameters-introduction">Important parameters introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#metamapwrap">MetamapWrap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sim">Sim</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#pipeline-script">pipeline script</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#parsing-free-text">Parsing free text</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#parsing-short-sentence">Parsing short sentence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parsing-long-sentence">Parsing long sentence</a></li>
@@ -182,8 +184,8 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="package-introduction">
-<h2>Package introduction<a class="headerlink" href="#package-introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="important-parameters-introduction">
+<h2>Important parameters introduction<a class="headerlink" href="#important-parameters-introduction" title="Permalink to this headline">¶</a></h2>
 <p>PyMeSHSim provided three subpackages metamapWrap, Data, and Sim. The Data subpackage was the foundation of metamapWrap and Sim. It contained a redesigned data frame of MeSH terms, including main headings, supplementary concept records, and relations between them. That made MeSH term interpretation more quickly and efficiently. The metamapWrap was the essence of biomedical named entity recognition (bio-NE). It would invoke <a class="reference external" href="https://metamap.nlm.nih.gov/">metamap</a> to parse the free text. Then, metamapWrap converted the result to MeSH terms through the Data subpackage. Besides the above two functions, Sim had implemented five semantic similarity measurement methods. In totally, the functions of pyMeSHSim could be summarized into 4 point:</p>
 <ul class="simple">
 <li><p>Translating free text to MeSH term</p></li>
@@ -195,8 +197,8 @@
 <div class="section" id="metamapwrap">
 <h3>MetamapWrap<a class="headerlink" href="#metamapwrap" title="Permalink to this headline">¶</a></h3>
 <p>MetamapWrap was a wrapper for metamap. metamapWrap combined the functions of metamap and the MeSH vocabulary, then realized bio-NE recognition and normalization. it invoked the metamap to parsed free text to UMLS concepts, then converted the UMLS concepts to MeSH terms via the Data subpackage. Although, the metamap <a class="reference external" href="https://metamap.nlm.nih.gov/UsingMetaMap.shtml">reference</a> had a detail description for its usage, we would introduce some important parameters accompany with pyMeSHSim examples here. The main parameters were listed in extended table 1.</p>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">important parameters in etamapWrap</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">important parameters in etamapWrap</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -286,15 +288,15 @@ The metamap recommended to use term processing together with ignore_word_order. 
 <span class="go">[{&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;17.80&#39;, &#39;preferred_name&#39;: &#39;Ataxia&#39;, &#39;cui&#39;: &#39;C0004134&#39;, &#39;semtypes&#39;: &#39;[sosy]&#39;, &#39;trigger&#39;: &#39;[&quot;Ataxia&quot;-tx-1-&quot;Ataxias&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;0/7&#39;, &#39;tree_codes&#39;: &#39;C10.597.350.090;C23.888.592.350.090&#39;, &#39;MeSHID&#39;: &#39;D001259&#39;}, {&#39;index&#39;: &#39;00000000&#39;, &#39;mm&#39;: &#39;MMI&#39;, &#39;score&#39;: &#39;17.80&#39;, &#39;preferred_name&#39;: &#39;Gait&#39;, &#39;cui&#39;: &#39;C0016928&#39;, &#39;semtypes&#39;: &#39;[fndg]&#39;, &#39;trigger&#39;: &#39;[&quot;Gait&quot;-tx-1-&quot;Gait&quot;-noun-0]&#39;, &#39;location&#39;: &#39;TX&#39;, &#39;pos_info&#39;: &#39;9/4&#39;, &#39;tree_codes&#39;: &#39;E01.370.600.250;G11.427.590.530.389&#39;, &#39;MeSHID&#39;: &#39;D005684&#39;}]</span>
 </pre></div>
 </div>
-<p>The other parameters in metamapWrap are format options. And detail information can be seen in <a class="reference external" href="http://pymeshsim.systemsgenetics.cn/index.html">http://pymeshsim.systemsgenetics.cn/index.html</a>.</p>
+<p>The other parameters in metamapWrap are format options. And detail information can be seen in <a class="reference external" href="https://pymeshsim.readthedocs.io/en/latest/reference.html">reference</a>.</p>
 </div>
 <div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The data subpackage contained the basic data frame in pyMeSHSim. It had two major functions, constructing MeSH data from UMLS metathesaurus and establishing data application interfaces. The data construction module made the data update easily. And the data application interface module made it possible to be used by other developers.
 Based on the data subpackage, pyMeSHSim provided a series of useful function as descripted in extended table 2.
 Application interface   Duction description</p>
-<table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-text">library function in data</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">library function in data</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -334,8 +336,97 @@ Application interface   Duction description</p>
 </tr>
 </tbody>
 </table>
-<p>The examples of these interfaces could be seen in <a class="reference external" href="http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library">http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library</a>.</p>
+<p>The examples of these interfaces could be seen in  <a class="reference external" href="https://pymeshsim.readthedocs.io/en/latest/tutorial.html#term-library">https://pymeshsim.readthedocs.io/en/latest/tutorial.html#term-library</a>.</p>
 </div>
+<div class="section" id="sim">
+<h3>Sim<a class="headerlink" href="#sim" title="Permalink to this headline">¶</a></h3>
+<p>PyMeSHSim had implemented five semantic similarity algorithms. Four IC-based algorithms and one graph-based algorithm. The IC-base methods had fixed Algorithm formulas, but the graph-based method could be influenced by a parameter ω weight. We test the ω weight on the GWAS phenotypes. For the MeSH term pairs parsed by Nelson’s group manual work and pyMeSHSim, we calculated the semantic similarity between them. The result was displayed in supplementary table 4. We excluded the term pairs, which had sematic similarities equal to 1 or 0 in all algorithms.</p>
+<p>Then, we investigated the increment of semantic similarity when increasing the weight by a step 0.1. As the supplementary figure 1A showed, the semantic similarity increase stably while weight increase. So, if users use Wang’s method to measure the semantic similarity, any weight ω could distinguish MeSH term’s difference in the same extent. To be noticed, different ω is suit for different threshold that indicating a pair of MeSH terms are similar.
+If comparing this method to IC-based methods, ω 0.6 is recommended. As it has a highest correlation with other algorithms compared to other values. (Supplementary figure 1B)</p>
+</div>
+</div>
+<div class="section" id="pipeline-script">
+<h2>pipeline script<a class="headerlink" href="#pipeline-script" title="Permalink to this headline">¶</a></h2>
+<p>As pyMeSHSim implemented bio-NE recognition, normalization, and comparison functions.  To make it easily used, we provide an example script “pipeline.py” to do batch processing.</p>
+<dl>
+<dt>The example commands were as below:</dt><dd><p>Text parsing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./pipeline.py textParse /home/luozhihui/Software/public_mm/bin/metamap16 /home/luozhihui/Project/free_text.reFormat_1.txt /home/luozhihui/Project/output_dir --source=MSH –short
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">The input file need to be separated by “|”, and it only has two columns.</div>
+</div>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">input file one</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1|Serum uric acid</p></td>
+</tr>
+<tr class="row-even"><td><p>2|Nephrolithiasis</p></td>
+</tr>
+<tr class="row-odd"><td><p>3|Non-albumin protein levels</p></td>
+</tr>
+<tr class="row-even"><td><p>4|Sphingolipid concentrations</p></td>
+</tr>
+<tr class="row-odd"><td><p>5|Age-related macular degeneration</p></td>
+</tr>
+<tr class="row-even"><td><p>6|Systemic lupus erythematosus</p></td>
+</tr>
+<tr class="row-odd"><td><p>7|Eye color traits</p></td>
+</tr>
+<tr class="row-even"><td><p>8|Type 1 diabetes autoantibodies</p></td>
+</tr>
+<tr class="row-odd"><td><p>9|Type 1 diabetes</p></td>
+</tr>
+<tr class="row-even"><td><p>10|Systolic blood pressure</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">We had stored an example of this input file as “free_text.reFormat.txt” in pyMeSHSim.</div>
+</div>
+<blockquote>
+<div><p>Similarity calculating:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./pipeline.py simCal ./output_dir/MeSH_term_pair.txt ./output_dir --weight=0.7
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">The input file should be MeSH ID pairs, separated by tab. Just like below:</div>
+</div>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">input file two</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>D018932  D018945</p></td>
+</tr>
+<tr class="row-even"><td><p>D008589  D008585</p></td>
+</tr>
+<tr class="row-odd"><td><p>D051436  D007676</p></td>
+</tr>
+<tr class="row-even"><td><p>D000418  D012709</p></td>
+</tr>
+<tr class="row-odd"><td><p>D006526  D019698</p></td>
+</tr>
+<tr class="row-even"><td><p>D051436  D007676</p></td>
+</tr>
+<tr class="row-odd"><td><p>D049971  D006852</p></td>
+</tr>
+<tr class="row-even"><td><p>D008548  D010859</p></td>
+</tr>
+<tr class="row-odd"><td><p>D008548  D010859</p></td>
+</tr>
+<tr class="row-even"><td><p>D003176  D003165</p></td>
+</tr>
+</tbody>
+</table>
+<p>We had stored an example of this input file as “MeSH_term_pair.txt” in pyMeSHSim.</p>
 </div>
 <div class="section" id="parsing-free-text">
 <h2>Parsing free text<a class="headerlink" href="#parsing-free-text" title="Permalink to this headline">¶</a></h2>

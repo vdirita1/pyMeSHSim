@@ -196,7 +196,7 @@ class pathMethod(InformationContent):
 
         parents = self.getParentsConceptID(dui=dui, category=category)
         if parents is None:
-            return 1
+            return {dui: 1}
         stack = deepcopy(parents)
         SVDict = {dui: 1}
         loopFlag = 1

@@ -118,11 +118,72 @@ Application interface	Duction description
      - Obtaining the preffered name by MeSH ID
 
 
-The examples of these interfaces could be seen in http://pymeshsim.systemsgenetics.cn/tutorial.html#term-library. 
+The examples of these interfaces could be seen in  https://pymeshsim.readthedocs.io/en/latest/tutorial.html#term-library. 
 
 
 
 
+Sim
+^^^^
+PyMeSHSim had implemented five semantic similarity algorithms. Four IC-based algorithms and one graph-based algorithm. The IC-base methods had fixed Algorithm formulas, but the graph-based method could be influenced by a parameter ω weight. We test the ω weight on the GWAS phenotypes. For the MeSH term pairs parsed by Nelson’s group manual work and pyMeSHSim, we calculated the semantic similarity between them. The result was displayed in supplementary table 4. We excluded the term pairs, which had sematic similarities equal to 1 or 0 in all algorithms.
+
+Then, we investigated the increment of semantic similarity when increasing the weight by a step 0.1. As the supplementary figure 1A showed, the semantic similarity increase stably while weight increase. So, if users use Wang’s method to measure the semantic similarity, any weight ω could distinguish MeSH term’s difference in the same extent. To be noticed, different ω is suit for different threshold that indicating a pair of MeSH terms are similar.
+If comparing this method to IC-based methods, ω 0.6 is recommended. As it has a highest correlation with other algorithms compared to other values. (Supplementary figure 1B)
+
+
+
+pipeline script
+==================
+As pyMeSHSim implemented bio-NE recognition, normalization, and comparison functions.  To make it easily used, we provide an example script “pipeline.py” to do batch processing.
+ 
+The example commands were as below:
+    Text parsing::
+
+    $ ./pipeline.py textParse /home/luozhihui/Software/public_mm/bin/metamap16 /home/luozhihui/Project/free_text.reFormat_1.txt /home/luozhihui/Project/output_dir --source=MSH –short
+
+| The input file need to be separated by “|”, and it only has two columns.
+
+.. list-table:: input file one
+   :widths: 50
+
+
+   * - 1|Serum uric acid
+   * - 2|Nephrolithiasis
+   * - 3|Non-albumin protein levels
+   * - 4|Sphingolipid concentrations
+   * - 5|Age-related macular degeneration
+   * - 6|Systemic lupus erythematosus
+   * - 7|Eye color traits    
+   * - 8|Type 1 diabetes autoantibodies
+   * - 9|Type 1 diabetes
+   * - 10|Systolic blood pressure
+    
+
+| We had stored an example of this input file as “free_text.reFormat.txt” in pyMeSHSim. 
+
+    Similarity calculating::
+
+    $ ./pipeline.py simCal ./output_dir/MeSH_term_pair.txt ./output_dir --weight=0.7
+
+| The input file should be MeSH ID pairs, separated by tab. Just like below:
+
+
+.. list-table:: input file two
+   :widths: 50
+
+
+   * - D018932	D018945
+   * - D008589	D008585
+   * - D051436	D007676
+   * - D000418	D012709
+   * - D006526	D019698
+   * - D051436	D007676
+   * - D049971	D006852
+   * - D008548	D010859
+   * - D008548	D010859
+   * - D003176	D003165
+
+We had stored an example of this input file as “MeSH_term_pair.txt” in pyMeSHSim. 
 
 
 
