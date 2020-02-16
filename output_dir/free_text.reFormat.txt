@@ -1,0 +1,461 @@
+1|Serum uric acid
+2|Nephrolithiasis
+3|Non-albumin protein levels
+4|Sphingolipid concentrations
+5|Age-related macular degeneration
+6|Systemic lupus erythematosus
+7|Eye color traits
+8|Type 1 diabetes autoantibodies
+9|Type 1 diabetes
+10|Systolic blood pressure
+11|Pulmonary function
+12|Esophageal cancer
+13|Triglycerides
+14|Crohn`s disease
+15|Breast cancer
+16|Corneal structure
+17|Red blood cell traits
+18|Immune response to smallpox vaccine
+19|Leprosy
+20|Waist-hip ratio
+21|Alzheimer`s disease
+22|Chronic Hepatitis C infection
+23|Amyotrophic lateral sclerosis
+24|Metabolite levels
+25|White blood cell types
+26|Bladder cancer
+27|Body mass index
+28|Glaucoma (primary open-angle)
+29|Freckles
+30|Red vs. non-red hair color
+31|Burning and freckling
+32|Skin sensitivity to sun
+33|Hematocrit
+34|Fibrinogen
+35|F-cell distribution
+36|Common traits (Other)
+37|Menopause (age at onset)
+38|Crohn`s disease and Celiac disease
+39|Venous thromboembolism
+40|Hypertension
+41|Pericardial fat
+42|Cardiovascular disease risk factors
+43|Serum creatinine
+44|Bone mineral density
+45|Testicular germ cell cancer
+46|Hemoglobin
+47|Phospholipid levels (plasma)
+48|Alopecia areata
+49|Graves` disease
+50|C-reactive protein and white blood cell count
+51|Sagittal craniosynostosis
+52|Pancreatitis
+53|Myopia (pathological)
+54|Renal function-related traits (BUN)
+55|Renal function-related traits (eGRFcrea)
+56|Renal function-related traits (sCR)
+57|Prostate cancer
+58|Longevity
+59|Colorectal cancer
+60|Inflammatory bowel disease
+61|Two-hour glucose challenge
+62|Head circumference (infant)
+63|Birth weight
+64|Height
+65|Erythrocyte sedimentation rate
+66|Response to statin therapy
+67|Lipoprotein-associated phospholipase A2 activity change in response to statin therapy
+68|Response to statin therapy (LDL-C)
+69|Multiple sclerosis
+70|Glycated hemoglobin levels
+71|Vitamin B12 levels
+72|Tumor biomarkers
+73|Chronic kidney disease
+74|Homocysteine levels
+75|Urate levels
+76|Vertical cup-disc ratio
+77|N-glycan levels
+78|Rheumatoid arthritis
+79|Primary biliary cirrhosis
+80|Systemic sclerosis
+81|Schizophrenia
+82|HDL cholesterol
+83|Age-related macular degeneration (CNV)
+84|Age-related macular degeneration (GA)
+85|Age-related macular degeneration (CNV vs. GA)
+86|Alcohol consumption
+87|Electrocardiographic traits
+88|QT interval
+89|Paget`s disease
+90|Proinsulin levels
+91|Primary tooth development (time to first tooth eruption)
+92|Acenocoumarol maintenance dosage
+93|Platelet counts
+94|Mean platelet volume
+95|Liver enzyme levels (gamma-glutamyl transferase)
+96|Nicotine dependence
+97|Thyroid hormone levels
+98|C-reactive protein
+99|White matter hypersensitivity burden
+100|Warfarin maintenance dose
+101|IgE levels
+102|Lung cancer
+103|Coagulation factor levels
+104|Insulin-like growth factors
+105|End-stage coagulation
+106|Vitamin D insufficiency
+107|Coronary artery disease
+108|Ovarian cancer
+109|Mean corpuscular volume
+110|Mean corpuscular hemoglobin
+111|Plasma levels of liver enzymes
+112|Sudden cardiac arrest
+113|Vitiligo
+114|Retinal vascular caliber
+115|Psoriasis
+116|Brain structure
+117|Metabolic syndrome
+118|Waist Circumference - Triglycerides (WC-TG)
+119|HDL Cholesterol - Triglycerides (HDLC-TG)
+120|Ulcerative colitis
+121|Celiac disease
+122|Type 2 diabetes
+123|Polycystic ovary syndrome
+124|Atrial fibrillation
+125|Acute lymphoblastic leukemia (childhood)
+126|Androgen levels
+127|Metabolic syndrome (bivariate traits)
+128|Fasting glucose-related traits
+129|Fasting plasma glucose
+130|Waist circumference
+131|Aortic root size
+132|Endometriosis
+133|Retinol levels
+134|Liver enzyme levels (alanie transaminase)
+135|"Cholesterol, total"
+136|Celiac disease and Rheumatoid arthritis
+137|Menarche (age at onset)
+138|Malaria
+139|Weight
+140|Thyroid volume
+141|Dilated cardiomyopathy
+142|Neuroblastoma (high-risk)
+143|Drug-induced liver injury (flucloxacillin)
+144|Lung adenocarcinoma
+145|Intracranial aneurysm
+146|Myeloproliferative neoplasms
+147|Thyroid cancer
+148|Bipolar disorder
+149|Mammographic density
+150|Atopic dermatitis
+151|Immune reponse to smallpox (secreted IL-1beta)
+152|Diastolic blood pressure
+153|Asthma
+154|Neuroblastoma
+155|Vitamin E levels
+156|Lipoprotein-associated phospholipase A2 activity and mass
+157|Hematological parameters
+158|Serum prostate-specific antigen levels
+159|Lipid metabolism phenotypes
+160|Serum albumin level
+161|Chronic lymphocytic leukemia
+162|Adiponectin levels
+163|Serum magnesium levels
+164|Ventricular conduction
+165|Serum metabolites
+166|Digit length ratio
+167|Pulmonary function (interaction)
+168|Immune reponse to smallpox (secreted IFN-alpha)
+169|Migraine
+170|Scoliosis
+171|Blood pressure
+172|Age-related macular degeneration (wet)
+173|Ankylosing spondylitis
+174|Response to metformin
+175|Immune reponse to smallpox (secreted IL-2)
+176|Serum matrix metalloproteinase
+177|Myocardial infarction (early onset)
+178|Coronary heart disease
+179|Vitamin D levels
+180|Parkinson`s disease
+181|Ribavirin-induced anemia
+182|IgM levels
+183|Cystatin C
+184|LDL cholesterol
+185|Hematological and biochemical traits
+186|Tanning
+187|Serum urate
+188|Serum butyrylcholinesterase
+189|Gamma gluatamyl transferase levels
+190|Response to hepatitis C treatment
+191|Fasting glucose-related traits (interaction with BMI)
+192|PR interval
+193|Infantile hypertrophic pyloric stenosis
+194|Menarche and menopause (age at onset)
+195|Serum dehydroepiandrosterone sulphate levels
+196|Response to fenofibrate
+197|Alzheimer`s disease (late onset)
+198|Hair morphology
+199|Triglycerides-Blood Pressure (TG-BP)
+200|AIDS progression
+201|Fetal hemoglobin levels
+202|Gallstones
+203|Bilirubin levels
+204|Stroke
+205|Bone mineral density (hip)
+206|Inflammatory biomarkers
+207|Neuranatomic and neurocognitive phenotypes
+208|Sphingolipid levels
+209|Obesity-related traits
+210|Monocyte chemoattractant protein-1
+211|White blood cell count
+212|Hematology traits
+213|Sex hormone-binding globulin levels
+214|Testosterone levels
+215|Hair color
+216|Black vs. blond hair color
+217|Freckling
+218|Eye color
+219|Progressive supranuclear palsy
+220|Diabetic retinopathy
+221|Plasma carotenoid and tocopherol levels
+222|Squamous cell carcinoma
+223|Upper aerodigestive tract cancers
+224|Breast size
+225|Prostate-specific antigen levels
+226|Central corneal thickness
+227|Aging
+228|Uterine fibroids
+229|Crohn`s disease and psoriasis
+230|Inflammatory bowel disease (early onset)
+231|IgA nephropathy
+232|Gamma glutamyl transpeptidase
+233|Male-pattern baldness
+234|Platelet aggregation
+235|Optic disc size (disc)
+236|Restless legs syndrome
+237|Other metabolic traits
+238|Hypertriglyceridemia
+239|Plasma eosinophil count
+240|Telomere length
+241|Response to clopidogrel therapy
+242|Cystic fibrosis severity
+243|Blue vs. green eyes
+244|Blond vs. brown hair color
+245|Black vs. red hair color
+246|Renal function and chronic kidney disease
+247|Psoriatic arthritis
+248|D-dimer levels
+249|Immune reponse to smallpox (secreted IL-10)
+250|Uric acid levels
+251|Pulmonary function measures
+252|Osteoporosis
+253|Gastric cancer
+254|Serum markers of iron status
+255|Melanoma
+256|Glioma (high-grade)
+257|Obesity
+258|Left ventricular mass
+259|Abdominal aortic aneurysm
+260|Gout
+261|Behcet`s disease
+262|Keloid
+263|Periodontitis
+264|Pancreatic cancer
+265|Response to antipsychotic treatment
+266|Nasopharyngeal carcinoma
+267|Activated partial thromboplastin time
+268|Blue vs. brown eyes
+269|Recombination rate (females)
+270|Hepatitis C induced liver fibrosis
+271|Liver enzyme levels (alkaline phosphatase)
+272|Conduct disorder (symptom count)
+273|Bone mineral density (spine)
+274|Obesity and blood pressure
+275|Serum phosphorus concentrations
+276|Corneal curvature
+277|Biliary atresia
+278|Aspartate aminotransferase
+279|Major depressive disorder (broad)
+280|Chronic obstructive pulmonary disease-related biomarkers
+281|Hippocampal volume
+282|Serum calcium
+283|Urinary metabolites
+284|Hemostatic factors and hematological phenotypes
+285|Serum iron concentration
+286|Hepatocellular carcinoma
+287|Resting heart rate
+288|Soluble leptin receptor levels
+289|Esophageal cancer (squamous cell)
+290|Soluble ICAM-1
+291|Creutzfeldt-Jakob disease
+292|Serum hepcidin
+293|Plasma homocysteine
+294|Urinary albumin excretion
+295|Kawasaki disease
+296|Red vs non-red hair color
+297|Basal cell carcinoma (cutaneous)
+298|Interleukin-18 levels
+299|Carotid intima media thickness
+300|Protein quantitative trait loci
+301|Optic disc parameters
+302|Chronic obstructive pulmonary disease
+303|Cognitive test performance
+304|Immunoglobulin A
+305|Haptoglobin levels
+306|Hodgkin`s lymphoma
+307|Thyroid function
+308|Beta thalassemia/hemoglobin E disease
+309|Neutrophil count
+310|Other erythrocyte phenotypes
+311|Testicular germ cell tumor
+312|Stroke (ischemic)
+313|IgE grass sensitization
+314|Kidney stones
+315|Plasminogen activator inhibitor type 1 levels (PAI-1)
+316|Soluble levels of adhesion molecules
+317|Glomerulosclerosis
+318|Ewing sarcoma
+319|Major mood disorders
+320|Serum IgE levels
+321|Mean corpuscular hemoglobin concentration
+322|Protein biomarker
+323|Wilms tumor
+324|"Multiple cancers (lung cancer, gastric cancer, and squamous cell carcinoma)"
+325|Duodenal ulcer
+326|Prothrombin time
+327|Glioma
+328|Cognitive function
+329|Cortical structure
+330|Nephropathy
+331|Caffeine consumption
+332|Coffee consumption
+333|Select biomarker traits
+334|Pain
+335|Renal function-related traits (urea)
+336|Circulating vasoactive peptide levels
+337|Serum bilirubin levels
+338|Amyloid A Levels
+339|Epirubicin-induced leukopenia
+340|Primary sclerosing cholangitis
+341|Glaucoma
+342|Aging (facial)
+343|Fasting insulin-related traits
+344|Smoking behavior
+345|Waist circumference and related phenotypes
+346|Blood lipid traits
+347|Esophageal cancer and gastric cancer
+348|Dengue shock syndrome
+349|Serum total protein level
+350|Recombination rate (males)
+351|Breast cancer (male)
+352|Eosinophilic esophagitis (pediatric)
+353|Plasma C4b binding protein levels
+354|Glaucoma (exfoliation)
+355|Resistin levels
+356|Dental caries
+357|Serum Phytosterol Levels
+358|Methotrexate clearance (acute lymphoblastic leukemia)
+359|Meningococcal disease
+360|Chronic kidney disease and serum creatinine concentration
+361|Angiotensin-converting enzyme activity
+362|Alzheimer`s disease (age of onset)
+363|Cognitive decline
+364|Endometrial cancer
+365|Apolipoprotein Levels
+366|Testicular cancer
+367|Multiple myeloma
+368|Vascular endothelial growth factor levels
+369|Cutaneous nevi
+370|Folate pathway vitamin levels
+371|Nephropathy (idiopathic membranous)
+372|Sclerosing cholangitis and ulcerative colitis (combined)
+373|Type 2 diabetes and other traits
+374|Response to temozolomide
+375|IgG levels
+376|Chronic myeloid leukemia
+377|Sarcoidosis
+378|End-stage renal disease (non-diabetic)
+379|Plasma level of vitamin B12
+380|YKL-40 levels
+381|Orofacial clefts
+382|Factor VII
+383|Beta-trace protein levels
+384|Serum soluble E-selectin
+385|Coronary disease
+386|Intelligence
+387|Plasma levels of Protein C
+388|Fuch`s corneal dystrophy
+389|Fuchs`s corneal dystrophy
+390|Progranulin levels
+391|Plasma E-selectin levels
+392|Circulating cell-free DNA
+393|LDL (oxidized)
+394|Immune reponse to smallpox (secreted IL-12p40)
+395|Bitter taste response
+396|Smoking cessation
+397|Cardiac repolarization
+398|Epilepsy (generalized)
+399|Nonalcoholic fatty liver disease
+400|Quantitative traits
+401|Facial morphology
+402|Alzheimer's disease
+403|Renal cell carcinoma
+404|Type 1 diabetes nephropathy
+405|Alcohol dependence
+406|Corneal astigmatism
+407|Airflow obstruction
+408|Diabetes (gestational)
+409|Plasma Lp (a) levels
+410|Body mass (lean)
+411|Asthma (childhood onset)
+412|HbA2 levels
+413|Urinary bladder cancer
+414|Attention deficit hyperactivity disorder
+415|Adiposity
+416|Immune response to smallpox vaccine (IL-6)
+417|Plasma coagulation factors
+418|Anticoagulant levels
+419|Cholelithiasis-related traits in sickle cell anemia
+420|Cardiac structure and function
+421|Esophageal cancer  (alcohol interaction)
+422|Coronary artery calcification
+423|Cortical thickness
+424|IFN-related cytopenia
+425|Personality dimensions
+426|Natriuretic peptide levels
+427|Hepatocellular carcinoma (hepatitis B virus related)
+428|Dietary macronutrient intake
+429|Monocyte early outgrowth colony forming units
+430|Myocardial infarction
+431|Lymphocyte counts
+432|Thoracic aortic aneurysms and dissections
+433|Electroencephalographic traits in alcoholism
+434|Response to tamoxifen in breast cancer
+435|Ankle-brachial index
+436|Drinking behavior
+437|Creutzfeldt-Jakob disease (variant)
+438|Non-obstructive azoospermia
+439|Parkinson`s disease (familial)
+440|Gamma gluatamyl transferase levels (interaction with age)
+441|Obesity (extreme)
+442|Cleft lip
+443|Hypothyroidism
+444|Prion diseases
+445|Osteoarthritis
+446|Hirschsprung`s disease
+447|Lapatinib-induced hepatotoxicity
+448|Intraocular pressure
+449|Non-small cell lung cancer
+450|Retinopathy in non-diabetics
+451|Thiazide-induced adverse metabolic effects in hypertensive patients
+452|Panic disorder
+453|Hepatitis B
+454|Schizophrenia (treatment refractory)
+455|Autism
+456|Peripartum cardiomyopathy
+457|Major depressive disorder
+458|Complement C3 and C4 levels
+459|Cystic fibrosis (meconium ileus)
+460|Diabetic nephropathy
+461|Response to Vitamin E supplementation

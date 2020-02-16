@@ -179,6 +179,6 @@ def calculate_sim(dui1=None, dui2=None, weight=None):
 if __name__ == '__main__':
     pipeline()
     """
-    ./pipeline.py textParse /home/luozhihui/Software/public_mm/bin/metamap16 /home/luozhihui/Project/free_text.reFormat_1.txt /home/luozhihui/Project/output_dir --source=MSH --short
+    ./pipeline.py textParse /home/luozhihui/Software/public_mm/bin/metamap16 ./output_dir/free_text.reFormat.txt ./output_dir --source=MSH --short
     ./pipeline.py simCal ./output_dir/MeSH_term_pair.txt ./output_dir --weight=0.7
     """
