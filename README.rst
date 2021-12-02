@@ -6,6 +6,8 @@ More details can be seen in the `reference <https://pymeshsim.readthedocs.io/en/
 
 cite：Luo, Z., Shi, M., Yang, Z. et al. pyMeSHSim: an integrative python package for biomedical named entity recognition, normalization, and comparison of MeSH terms. BMC Bioinformatics 21, 252 (2020). https://doi.org/10.1186/s12859-020-03583-6
 
+Some dependence of pyMeSHSim had restrict version limitation. The most convenient way to install pyMeSHSim is that use conda create a python 3.6.5 enviroment, and then isntall pyMeSHSim in this enviroment. 
+
 pyMeSHSim at glance
 ===================
 
